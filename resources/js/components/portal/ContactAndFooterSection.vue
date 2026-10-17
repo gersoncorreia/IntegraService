@@ -383,9 +383,6 @@ const submitLead = async () => {
                             <span>Login Telemedicina</span>
                             <span>↗</span>
                         </a>
-                        <a :href="urls.adminLogin" class="inline-block text-xs text-slate-400 hover:text-cyan-300 pt-2 transition">
-                            Área Administrativa (CMS) →
-                        </a>
                     </div>
                 </div>
 

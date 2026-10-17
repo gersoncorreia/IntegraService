@@ -120,14 +120,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
             <!-- Ações Direitas de Precisão (Tablet & Desktop) -->
             <div class="hidden sm:flex items-center gap-2.5 shrink-0">
-                <a
-                    :href="isAuthenticated ? (urls.adminSections || urls.adminDashboard) : urls.adminLogin"
-                    class="h-9 px-3 rounded font-brand font-bold text-[11px] uppercase tracking-wider text-[#00509D] bg-sky-50 hover:bg-sky-100 border border-sky-200 inline-flex items-center whitespace-nowrap transition"
-                    title="Acessar Painel Administrativo (CMS)"
-                >
-                    {{ isAuthenticated ? 'Painel CMS' : 'Admin' }}
-                </a>
-
                 <button
                     @click="emit('open-platforms')"
                     type="button"
@@ -223,10 +215,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                     <a @click="mobileMenuOpen = false" href="#siscoop3f" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
                         <span class="font-brand font-semibold text-sm text-[#80FFDB]">Simulador Financeiro de Parceria</span>
                         <span class="text-xs text-[#80FFDB]">↓</span>
-                    </a>
-                    <a :href="isAuthenticated ? (urls.adminSections || urls.adminDashboard) : urls.adminLogin" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
-                        <span class="font-brand font-semibold text-xs text-slate-300">Painel Administrativo (CMS)</span>
-                        <span class="text-xs text-slate-400">⚙</span>
                     </a>
                 </div>
 
