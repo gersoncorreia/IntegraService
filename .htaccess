@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # 1. Bloquear acesso direto a arquivos sensíveis (.env, composer.json, git, etc.)
+    RewriteRule ^(^\.|\.env|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|artisan|Dockerfile|docker-compose\.yml) - [F,L,NC]
+
+    # 2. Bloquear acesso direto às pastas internas do Laravel
+    RewriteRule ^(app|bootstrap|config|database|docs|resources|routes|storage|tests|vendor)(/.*)?$ - [F,L,NC]
+
+    # 3. Permitir certbot / Let's Encrypt (.well-known) da HostGator / cPanel
+    RewriteRule ^\.well-known/ - [L]
+
+    # 4. Redirecionar internamente todas as requisições da raiz para a pasta /public
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
+</IfModule>
+
+# Proteção adicional contra listagem de diretórios
+Options -Indexes

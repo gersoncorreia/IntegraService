@@ -40,47 +40,32 @@ Após rodar as *migrations* e *seeders* (`php artisan migrate --seed`), o acesso
 
 ---
 
-## Passo 2: Enviar os Arquivos do Projeto para o Servidor
+## Passo 2: Enviar os Arquivos do Projeto na HostGator (Clonando Direto na Pasta do Subdomínio)
 
-Existem duas formas de organizar os arquivos em hospedagem compartilhada:
+Como o repositório já possui um arquivo [`.htaccess`](../.htaccess) na raiz que redireciona internamente para `public/` e bloqueia o acesso a arquivos sensíveis (`.env`, `app/`, `config/`, etc.), você pode clonar o projeto **diretamente na raiz da pasta do subdomínio** (ex: `~/integramais.aljavatech.com.br`).
 
-### Opção Recomendada (Com acesso SSH ou Subdomínio/Domínio apontando para `/public`):
-1. Clone o repositório fora da `public_html` (por exemplo, em `/home/seu_usuario/integraservice`):
-   ```bash
-   cd ~
-   git clone https://github.com/gersoncorreia/IntegraService.git integraservice
-   cd integraservice
-   ```
-2. Substitua a pasta `public_html` por um link simbólico (symlink) apontando para a pasta `public` do Laravel:
-   ```bash
-   rm -rf ~/public_html
-   ln -s ~/integraservice/public ~/public_html
-   ```
+### 2.1 — Limpar 100% da pasta do subdomínio (inclusive arquivos ocultos como `.htaccess` e `.well-known`)
+O comando `git clone ... .` exige que a pasta esteja **totalmente vazia** (sem nenhum arquivo visível ou oculto). Conecte via SSH na HostGator e execute:
 
-### Opção Alternativa (Sem SSH — Apenas Gerenciador de Arquivos / FTP):
-1. Crie uma pasta chamada `integraservice_core` na raiz da sua conta (`/home/seu_usuario/integraservice_core`) — um nível **acima** de `public_html`.
-2. Envie todos os arquivos do projeto para dentro de `integraservice_core`, **exceto** o conteúdo da pasta `public`.
-3. Pegue todo o conteúdo de dentro da pasta `public/` do projeto (`index.php`, `.htaccess`, `assets/`, `build/`) e coloque diretamente dentro de `public_html/`.
-4. Edite o arquivo `public_html/index.php` para apontar para a pasta `integraservice_core`:
-   ```php
-   <?php
+```bash
+# 1. Entrar na pasta do subdomínio
+cd ~/integramais.aljavatech.com.br
 
-   use Illuminate\Foundation\Application;
-   use Illuminate\Http\Request;
+# 2. Apagar TODOS os arquivos e pastas (visíveis e ocultos) de dentro da pasta atual
+find . -mindepth 1 -delete
 
-   define('LARAVEL_START', microtime(true));
+# (Alternativa caso o find não esteja disponível):
+# rm -rf * .[!.]* ..?*
+```
 
-   if (file_exists($maintenance = __DIR__.'/../integraservice_core/storage/framework/maintenance.php')) {
-       require $maintenance;
-   }
+Verifique se ficou realmente vazia rodando `ls -la` (deve mostrar apenas `.` e `..`).
 
-   require __DIR__.'/../integraservice_core/vendor/autoload.php';
+### 2.2 — Clonar o Repositório Direto na Raiz da Pasta (`.`)
+Agora que a pasta está limpa, execute:
 
-   /** @var Application $app */
-   $app = require_once __DIR__.'/../integraservice_core/bootstrap/app.php';
-
-   $app->handleRequest(Request::capture());
-   ```
+```bash
+git clone https://github.com/gersoncorreia/IntegraService.git .
+```
 
 ---
 
