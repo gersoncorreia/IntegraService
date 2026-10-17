@@ -7,7 +7,8 @@ const props = defineProps({
     contact: { type: Object, default: null },
     settings: { type: Object, required: true },
     urls: { type: Object, required: true },
-    selectedVertical: { type: String, default: 'SISCOOP3F - Gestão Cooperativista' },
+    ecosystemTabs: { type: Array, default: () => [] },
+    selectedVertical: { type: String, default: 'SISCOOP3F' },
     preselectedUsers: { type: Number, default: null },
 });
 
@@ -292,12 +293,16 @@ const submitLead = async () => {
                                             v-model="form.vertical_interest"
                                             class="w-full h-11 px-3.5 sm:px-4 rounded bg-[#F8FAFC] border border-slate-300 focus:border-[#00509D] focus:bg-white focus:ring-2 focus:ring-[#00509D]/15 focus:outline-none text-base sm:text-sm font-medium text-[#022B5B] transition"
                                         >
-                                            <option value="SISCOOP3F - Gestão Cooperativista">SISCOOP3F — Gestão Cooperativista (30d sem custo)</option>
-                                            <option value="Plataforma de Telemedicina">Saúde Digital — Plataforma de Telemedicina 24/7</option>
-                                            <option value="A Clínica & Departamentos">Saúde Presencial — A Clínica & Especialidades</option>
-                                            <option value="Consultoria, Auditoria & Mentoria">Inteligência Corporativa — Consultoria & Auditoria</option>
-                                            <option value="Livro & Publicações">Autoridade Geral — Livro, Palestras & Publicações</option>
-                                            <option value="Ecossistema Completo IntegreService">Parceria Completa — Todo o Ecossistema IntegreService</option>
+                                            <option
+                                                v-for="tab in ecosystemTabs"
+                                                :key="tab.key"
+                                                :value="tab.tab_title"
+                                            >
+                                                {{ tab.number }} • {{ tab.tab_title }} — {{ tab.tab_subtitle }}
+                                            </option>
+                                            <option value="Ecossistema Completo IntegreService">
+                                                Parceria Completa — Todo o Ecossistema IntegreService
+                                            </option>
                                         </select>
                                     </div>
 

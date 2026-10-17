@@ -26,6 +26,12 @@ class UpdatePageSectionRequest extends FormRequest
             'secondary_cta_url' => ['nullable', 'string', 'max:500'],
             'palette' => ['required', 'in:paleta_01,paleta_02,paleta_03'],
             'sort_order' => ['required', 'integer'],
+            // Metadados da Frente de Atuação (Aba)
+            'tab_title' => ['nullable', 'string', 'max:80'],
+            'tab_subtitle' => ['nullable', 'string', 'max:100'],
+            'tab_icon' => ['nullable', 'string', 'max:50'],
+            'tab_theme' => ['nullable', 'in:light,dark'],
+            'tab_type' => ['nullable', 'in:cards,clinic,book'],
         ];
     }
 }

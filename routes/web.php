@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PortalController::class, 'index'])->name('portal.home');
 Route::post('/solicitar-proposta', [PortalController::class, 'storeLead'])->name('portal.lead.store');
 
-// Autenticação do Painel Administrativo
+// Autenticação e Gestão do Painel Administrativo (CMS)
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
@@ -24,8 +24,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/configuracoes', [CmsController::class, 'settings'])->name('settings');
         Route::put('/configuracoes', [CmsController::class, 'updateSettings'])->name('settings.update');
 
-        // Seções do Portal & Cards Internos
+        // Seções do Portal, Frentes de Atuação (Abas) & Cards Internos
         Route::get('/secoes', [CmsController::class, 'sections'])->name('sections.index');
+        Route::post('/secoes', [CmsController::class, 'storeSection'])->name('sections.store');
+        Route::patch('/secoes/{section}/toggle', [CmsController::class, 'toggleSection'])->name('sections.toggle');
+        Route::delete('/secoes/{section}', [CmsController::class, 'destroySection'])->name('sections.destroy');
         Route::get('/secoes/{section}/editar', [CmsController::class, 'editSection'])->name('sections.edit');
         Route::put('/secoes/{section}', [CmsController::class, 'updateSection'])->name('sections.update');
         Route::post('/secoes/{section}/itens', [CmsController::class, 'storeSectionItem'])->name('sections.items.store');

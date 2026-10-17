@@ -43,11 +43,73 @@ class CmsController extends Controller
         return back()->with('success', 'Configurações globais, links e parâmetros do simulador atualizados com sucesso!');
     }
 
-    // 2. SEÇÕES DO PORTAL & CARDS INTERNOS
+    // 2. SEÇÕES DO PORTAL, FRENTES DE ATUAÇÃO (ABAS) & CARDS INTERNOS
     public function sections(): View
     {
-        $sections = PageSection::with('items')->ordered()->get();
-        return view('admin.sections.index', compact('sections'));
+        $allSections = PageSection::with('items')->ordered()->get();
+
+        $ecosystemTabs = $allSections->filter(fn (PageSection $sec) => $sec->isEcosystemTab())->values();
+        $structuralSections = $allSections->reject(fn (PageSection $sec) => $sec->isEcosystemTab())->values();
+
+        return view('admin.sections.index', [
+            'sections' => $allSections,
+            'ecosystemTabs' => $ecosystemTabs,
+            'structuralSections' => $structuralSections,
+        ]);
+    }
+
+    public function storeSection(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'tab_title' => ['required', 'string', 'max:80'],
+            'tab_subtitle' => ['required', 'string', 'max:100'],
+            'tab_icon' => ['required', 'string', 'max:50'],
+            'tab_theme' => ['required', 'in:light,dark'],
+            'badge_text' => ['nullable', 'string', 'max:191'],
+            'title' => ['required', 'string', 'max:191'],
+            'highlighted_word' => ['nullable', 'string', 'max:191'],
+            'subtitle' => ['nullable', 'string', 'max:2000'],
+            'primary_cta_text' => ['nullable', 'string', 'max:150'],
+            'primary_cta_url' => ['nullable', 'string', 'max:500'],
+            'secondary_cta_text' => ['nullable', 'string', 'max:150'],
+            'secondary_cta_url' => ['nullable', 'string', 'max:500'],
+            'sort_order' => ['nullable', 'integer'],
+            'first_card_title' => ['nullable', 'string', 'max:191'],
+            'first_card_metric' => ['nullable', 'string', 'max:100'],
+            'first_card_description' => ['nullable', 'string', 'max:1000'],
+        ]);
+
+        $section = $this->cmsService->createEcosystemTab($validated);
+
+        return redirect()
+            ->route('admin.sections.edit', $section)
+            ->with('success', "Nova Frente de Atuação \"{$validated['tab_title']}\" criada e habilitada no portal! Agora você pode adicionar mais cards de diferenciais abaixo.");
+    }
+
+    public function toggleSection(PageSection $section): RedirectResponse
+    {
+        $section->update([
+            'is_active' => !$section->is_active,
+        ]);
+
+        $statusLabel = $section->is_active ? 'HABILITADA (Visível no Portal)' : 'OCULTADA do Portal';
+        $name = $section->getTabMeta()['tab_title'] ?? $section->nav_label ?? $section->section_key;
+
+        return back()->with('success', "A seção/frente \"{$name}\" foi {$statusLabel}!");
+    }
+
+    public function destroySection(PageSection $section): RedirectResponse
+    {
+        if (in_array($section->section_key, PageSection::STRUCTURAL_KEYS, true)) {
+            return back()->with('success', 'Seções estruturais principais podem ser ocultadas, mas não excluídas.');
+        }
+
+        $name = $section->getTabMeta()['tab_title'] ?? $section->nav_label ?? $section->section_key;
+        $section->delete();
+
+        return redirect()
+            ->route('admin.sections.index')
+            ->with('success', "Frente de Atuação \"{$name}\" removida com sucesso.");
     }
 
     public function editSection(PageSection $section): View
@@ -61,16 +123,30 @@ class CmsController extends Controller
         $heroExtra = [];
         if ($section->section_key === 'hero') {
             $heroExtra = [
-                'stat_1_value' => $request->input('stat_1_value', '5 Verticais'),
-                'stat_1_label' => $request->input('stat_1_label', 'Integradas em Rede Única'),
+                'stat_1_value' => $request->input('stat_1_value', '5 Soluções'),
+                'stat_1_label' => $request->input('stat_1_label', 'Integradas em Rede'),
                 'stat_2_value' => $request->input('stat_2_value', '30 Dias'),
-                'stat_2_label' => $request->input('stat_2_label', 'Implantação & Testes Sem Custo'),
+                'stat_2_label' => $request->input('stat_2_label', 'Implantação Gratuita'),
                 'stat_3_value' => $request->input('stat_3_value', 'R$ 0,00'),
-                'stat_3_label' => $request->input('stat_3_label', 'Desembolso Inicial da Receita Corrente'),
+                'stat_3_label' => $request->input('stat_3_label', 'Desembolso Inicial'),
             ];
         }
 
-        $this->cmsService->updateSection($section, $request->validated(), $request->boolean('is_active'), $heroExtra);
+        $tabExtra = [
+            'tab_title' => $request->input('tab_title'),
+            'tab_subtitle' => $request->input('tab_subtitle'),
+            'tab_icon' => $request->input('tab_icon'),
+            'tab_theme' => $request->input('tab_theme'),
+            'tab_type' => $request->input('tab_type'),
+        ];
+
+        $this->cmsService->updateSection(
+            $section,
+            $request->validated(),
+            $request->boolean('is_active'),
+            $heroExtra,
+            $tabExtra
+        );
 
         return back()->with('success', "Seção \"{$section->nav_label}\" atualizada com sucesso!");
     }
@@ -82,7 +158,7 @@ class CmsController extends Controller
 
         $section->items()->create($validated);
 
-        return back()->with('success', 'Novo card/item adicionado à seção com sucesso!');
+        return back()->with('success', 'Novo card/diferencial adicionado com sucesso!');
     }
 
     public function updateSectionItem(SaveSectionItemRequest $request, SectionItem $item): RedirectResponse

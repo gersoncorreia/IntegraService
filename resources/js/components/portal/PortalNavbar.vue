@@ -5,6 +5,7 @@ import BrandLogo from '../ui/BrandLogo.vue';
 defineProps({
     settings: { type: Object, required: true },
     urls: { type: Object, required: true },
+    ecosystemTabs: { type: Array, default: () => [] },
     isAuthenticated: { type: Boolean, default: false },
 });
 
@@ -37,6 +38,29 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                 : 'bg-white border-b border-slate-200/80 py-2.5 sm:py-3'
         ]"
     >
+        <!-- Barra Superior de Edição Rápida (Exibida quando o Admin está logado!) -->
+        <div
+            v-if="isAuthenticated"
+            class="bg-[#011328] text-white border-b border-cyan-500/30 py-1.5 px-4 text-xs"
+        >
+            <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#00E5FF]"></span>
+                    <span class="font-brand font-bold text-[11px] uppercase tracking-wider text-cyan-200">
+                        Modo Administrador Ativo
+                    </span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a :href="urls.adminSections || urls.adminDashboard" class="font-brand font-bold text-[11px] text-[#00E5FF] hover:underline">
+                        Gerenciar Frentes de Atuação & Seções →
+                    </a>
+                    <a :href="urls.adminDashboard" class="px-2.5 py-0.5 rounded bg-white/10 hover:bg-white/20 font-brand font-bold text-[11px] text-white">
+                        Abrir Painel CMS
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
             <!-- Logo Oficial Responsiva -->
             <BrandLogo
@@ -91,11 +115,11 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
             <!-- Ações Direitas de Precisão (Tablet & Desktop) -->
             <div class="hidden sm:flex items-center gap-2.5 shrink-0">
                 <a
-                    v-if="isAuthenticated"
-                    :href="urls.adminDashboard"
+                    :href="isAuthenticated ? (urls.adminSections || urls.adminDashboard) : urls.adminLogin"
                     class="h-9 px-3 rounded font-brand font-bold text-[11px] uppercase tracking-wider text-[#00509D] bg-sky-50 hover:bg-sky-100 border border-sky-200 inline-flex items-center whitespace-nowrap transition"
+                    title="Acessar Painel Administrativo (CMS)"
                 >
-                    CMS
+                    {{ isAuthenticated ? 'Painel CMS' : 'Admin' }}
                 </a>
 
                 <button
@@ -139,10 +163,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
             </div>
         </div>
 
-        <!-- Menu Mobile Drawer Executivo (Swiss-Grid) -->
+        <!-- Menu Mobile Drawer Executivo (Lista Dinamicamente as Frentes de Atuação Ativas!) -->
         <Transition name="fade-slide">
             <div v-if="mobileMenuOpen" class="lg:hidden bg-[#011328] text-white border-b border-cyan-500/30 px-4 pt-4 pb-6 space-y-4 shadow-2xl">
-                <!-- Acesso Rápido às 2 Plataformas no Topo do Menu Mobile -->
                 <div class="space-y-1.5">
                     <span class="text-[10px] font-brand font-bold uppercase tracking-[0.14em] text-cyan-300 block">
                         Acesso Direto às Plataformas Online
@@ -169,38 +192,34 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                     </div>
                 </div>
 
-                <!-- Navegação Numerada das 5 Verticais -->
+                <!-- Navegação Numerada Dinâmica das Frentes de Atuação Habilitadas -->
                 <div class="space-y-1 pt-2 border-t border-white/10">
                     <span class="text-[10px] font-brand font-bold uppercase tracking-[0.14em] text-slate-400 block mb-1.5">
-                        Navegação do Portal
+                        Frentes de Atuação Ativas
                     </span>
-                    <button type="button" @click="selectTabAndScroll('siscoop3f')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
-                        <span class="font-brand font-semibold text-sm text-white">01 • SISCOOP3F (Cooperativas)</span>
-                        <span class="text-[10px] font-brand font-bold px-1.5 py-0.5 rounded-xs bg-[#80FFDB]/15 text-[#80FFDB]">30d Free</span>
-                    </button>
-                    <button type="button" @click="selectTabAndScroll('telemedicine')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
-                        <span class="font-brand font-semibold text-sm text-white">02 • Telemedicina 24/7</span>
+                    <button
+                        v-for="tab in ecosystemTabs"
+                        :key="`nav-mob-${tab.key}`"
+                        type="button"
+                        @click="selectTabAndScroll(tab.key)"
+                        class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left"
+                    >
+                        <span class="font-brand font-semibold text-sm text-white">
+                            {{ tab.number }} • {{ tab.tab_title }} ({{ tab.tab_subtitle }})
+                        </span>
                         <span class="text-xs text-cyan-300">→</span>
                     </button>
-                    <button type="button" @click="selectTabAndScroll('clinic')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
-                        <span class="font-brand font-semibold text-sm text-white">03 • A Clínica & Departamentos</span>
-                        <span class="text-xs text-cyan-300">→</span>
-                    </button>
-                    <button type="button" @click="selectTabAndScroll('consulting')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
-                        <span class="font-brand font-semibold text-sm text-white">04 • Consultoria & Auditoria</span>
-                        <span class="text-xs text-cyan-300">→</span>
-                    </button>
-                    <button type="button" @click="selectTabAndScroll('book')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
-                        <span class="font-brand font-semibold text-sm text-white">05 • O Livro & Publicações</span>
-                        <span class="text-xs text-cyan-300">→</span>
-                    </button>
+
                     <a @click="mobileMenuOpen = false" href="#siscoop3f" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
                         <span class="font-brand font-semibold text-sm text-[#80FFDB]">Simulador Financeiro de Parceria</span>
                         <span class="text-xs text-[#80FFDB]">↓</span>
                     </a>
+                    <a :href="isAuthenticated ? (urls.adminSections || urls.adminDashboard) : urls.adminLogin" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
+                        <span class="font-brand font-semibold text-xs text-slate-300">Painel Administrativo (CMS)</span>
+                        <span class="text-xs text-slate-400">⚙</span>
+                    </a>
                 </div>
 
-                <!-- CTA Principal Mobile -->
                 <a
                     @click="mobileMenuOpen = false"
                     href="#contato"

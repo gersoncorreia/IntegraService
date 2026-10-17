@@ -92,6 +92,7 @@ const handleSelectVertical = (verticalName, users = null) => {
         <PortalNavbar
             :settings="initialState.settings"
             :urls="initialState.urls"
+            :ecosystemTabs="initialState.ecosystemTabs || []"
             :isAuthenticated="initialState.isAuthenticated"
             @open-platforms="platformModalOpen = true"
             @navigate-tab="handleNavigateTab"
@@ -105,15 +106,11 @@ const handleSelectVertical = (verticalName, users = null) => {
                 :settings="initialState.settings"
             />
 
-            <!-- 3. Explorador Interativo das 5 Verticais em Abas Estruturadas -->
+            <!-- 3. Explorador Interativo das Frentes de Atuação (100% Dinâmico via CMS!) -->
             <EcosystemExplorerSection
                 :ecosystem="initialState.sections?.ecosystem"
-                :siscoop="initialState.sections?.siscoop3f"
-                :telemedicine="initialState.sections?.telemedicine"
-                :clinic="initialState.sections?.clinic"
+                :ecosystemTabs="initialState.ecosystemTabs || []"
                 :departments="initialState.departments || []"
-                :consulting="initialState.sections?.consulting"
-                :book="initialState.sections?.book"
                 :featuredBook="initialState.featuredBook"
                 :settings="initialState.settings"
                 :externalTab="activeExplorerTab"
@@ -133,6 +130,7 @@ const handleSelectVertical = (verticalName, users = null) => {
                 :contact="initialState.sections?.contact"
                 :settings="initialState.settings"
                 :urls="initialState.urls"
+                :ecosystemTabs="initialState.ecosystemTabs || []"
                 :selectedVertical="selectedVertical"
                 :preselectedUsers="preselectedUsers"
             />

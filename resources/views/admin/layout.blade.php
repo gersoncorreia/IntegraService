@@ -39,7 +39,7 @@
 
                     <a href="{{ route('admin.sections.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl font-brand font-semibold transition {{ request()->routeIs('admin.sections.*') ? 'bg-gradient-to-r from-[#00509D] to-[#00B4D8] text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white' }}">
                         <x-icon name="cpu" class="w-5 h-5" />
-                        <span>Seções & Cards do Site</span>
+                        <span>Frentes de Atuação & Seções</span>
                     </a>
 
                     <a href="{{ route('admin.departments.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl font-brand font-semibold transition {{ request()->routeIs('admin.departments.*') ? 'bg-gradient-to-r from-[#00509D] to-[#00B4D8] text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white' }}">
