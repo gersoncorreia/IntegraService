@@ -1,0 +1,168 @@
+CARTA DE INTENÇÃO
+
+À
+COOPERATIVA DE SAÚDE DOS SERVIDORES DO CORPO DE BOMBEIROS MILITAR DO ACRE – CBSAÚDE
+
+Assunto: Proposta de implantação de plataforma tecnológica integrada de gestão cooperativista – SISCOOP3F
+
+A INTEGRESERVICE, por meio de seu responsável e consultor, Senhor Eudemir Bezerra, vem apresentar à CBSAÚDE a presente Carta de Intenção, com o propósito de estabelecer as bases para uma futura parceria destinada à implantação de uma plataforma tecnológica de gestão cooperativista, denominada SISCOOP3F, especialmente configurada e ajustável à realidade operacional, administrativa e financeira da Cooperativa.
+
+1. OBJETIVO DA PROPOSTA
+
+A presente proposta tem como objetivo disponibilizar à CBSAÚDE uma plataforma moderna, expansível e continuamente ajustável, capaz de integrar-se aos demais sistemas e programas utilizados pela Cooperativa, seus prestadores, parceiros e usuários.
+
+A solução pretende contribuir para:
+
+profissionalizar e modernizar os processos de gestão;
+
+aumentar a transparência das operações;
+
+reduzir custos administrativos e operacionais;
+
+otimizar o relacionamento com cooperados, usuários, gestores e parceiros;
+
+facilitar o acesso aos serviços da Cooperativa;
+
+permitir acompanhamento das solicitações em tempo real;
+
+reduzir deslocamentos físicos para obtenção de guias, marcação e acompanhamento de serviços;
+
+melhorar o controle e a rastreabilidade das operações;
+
+criar novas possibilidades de receitas para a Cooperativa;
+
+proporcionar maior eficiência na utilização dos recursos existentes.
+
+A plataforma será desenvolvida e/ou configurada de forma modular e expansível, permitindo sua evolução conforme as necessidades da CBSAÚDE.
+
+2. MODELO DE INVESTIMENTO
+
+Um dos diferenciais da presente proposta é que a implantação da plataforma não deverá exigir, inicialmente, desembolso de recursos da receita corrente da CBSAÚDE, sendo o modelo de remuneração baseado na própria eficiência econômica e nas novas oportunidades proporcionadas pela solução.
+
+Como princípio econômico da parceria, propõe-se:
+
+I – 30% dos valores efetivamente economizados, comprovadamente decorrentes da implantação, utilização ou otimização proporcionada pelo SISCOOP3F;
+
+II – 30% das novas receitas efetivamente criadas ou viabilizadas com o auxílio da plataforma e de suas funcionalidades;
+
+III – valor de utilização pelos usuários, destinado à manutenção e disponibilização das funcionalidades de comodidade e atendimento digital.
+
+A metodologia de cálculo, os critérios de comprovação das economias e das novas receitas, bem como a forma de apuração e pagamento, deverão ser definidos no contrato definitivo celebrado entre as partes.
+
+3. COMODIDADE E SERVIÇOS DIGITAIS AO USUÁRIO
+
+A plataforma permitirá ao usuário acessar, de forma digital e simplificada, serviços que atualmente podem exigir deslocamento físico, possibilitando, conforme as funcionalidades implantadas:
+
+solicitação e obtenção de guias;
+
+marcação de serviços;
+
+acompanhamento de solicitações;
+
+consulta da situação junto à Cooperativa;
+
+comunicação com a Cooperativa;
+
+acesso a informações de utilização;
+
+acompanhamento de procedimentos e demais serviços disponibilizados pela CBSAÚDE.
+
+Para utilização dessas funcionalidades, propõe-se o valor de R$ 20,00 (vinte reais) mensais por usuário.
+
+Considerando a condição de parceria com o consultor, será concedido desconto de 50%, de modo que o valor inicialmente proposto aos usuários vinculados à CBSAÚDE será de:
+
+R$ 10,00 (dez reais) mensais por usuário.
+
+A cobrança e a forma de operacionalização desse valor serão estabelecidas no instrumento contratual e deverão observar a legislação aplicável e as regras internas da Cooperativa.
+
+4. IMPLANTAÇÃO SEM DESCONTINUIDADE DOS SERVIÇOS
+
+A implantação do SISCOOP3F será realizada de forma gradual e planejada, buscando assegurar que os serviços atualmente disponibilizados pela CBSAÚDE não sofram descontinuidade.
+
+Será concedido um período inicial de 30 (trinta) dias de adaptação, implantação e testes, sem qualquer custo para a CBSAÚDE, contado a partir da assinatura do contrato pelas partes.
+
+Durante esse período serão realizados, conforme planejamento conjunto:
+
+levantamento dos processos atuais;
+
+parametrização da plataforma;
+
+adequação às necessidades da CBSAÚDE;
+
+integração, quando tecnicamente possível, com sistemas existentes;
+
+treinamento dos usuários responsáveis;
+
+testes operacionais;
+
+ajustes necessários;
+
+acompanhamento da transição.
+
+A implantação deverá priorizar a continuidade dos serviços e a segurança das informações.
+
+5. EVOLUÇÃO E INOVAÇÃO DA PLATAFORMA
+
+O SISCOOP3F foi concebido como uma solução tecnológica evolutiva, podendo receber novas funcionalidades, módulos, integrações e aprimoramentos ao longo da parceria.
+
+Todas as novas funcionalidades, soluções, módulos, códigos, métodos, melhorias, desenvolvimentos tecnológicos e inovações de propriedade intelectual desenvolvidos pela INTEGRESERVICE, independentemente de terem sido desenvolvidos antes ou durante a parceria, permanecerão de propriedade da INTEGRESERVICE, salvo disposição expressa em contrário no contrato definitivo.
+
+A utilização da plataforma pela CBSAÚDE não implicará, por si só, cessão ou transferência da propriedade intelectual, código-fonte, arquitetura, metodologia ou demais elementos proprietários do sistema.
+
+6. PROTEÇÃO DA PROPRIEDADE INTELECTUAL
+
+A CBSAÚDE não poderá copiar, reproduzir, modificar, comercializar, sublicenciar, ceder, disponibilizar a terceiros ou utilizar para desenvolvimento de sistema concorrente os elementos proprietários do SISCOOP3F, salvo mediante autorização expressa da INTEGRESERVICE ou previsão contratual específica.
+
+As partes deverão observar a legislação brasileira aplicável à propriedade intelectual, direitos autorais, software, proteção de dados e demais normas pertinentes.
+
+Eventuais desenvolvimentos realizados especificamente para a CBSAÚDE deverão ter sua titularidade, licença de uso e condições de exploração claramente definidas no contrato definitivo, evitando qualquer dúvida quanto aos direitos de cada parte.
+
+7. SEGURANÇA, TRANSPARÊNCIA E CONTINUIDADE
+
+A solução deverá buscar proporcionar maior segurança, rastreabilidade e transparência aos processos da Cooperativa, permitindo que gestores autorizados tenham acesso às informações necessárias para tomada de decisão e que os usuários possam acompanhar, de maneira mais simples, sua relação com a CBSAÚDE.
+
+A plataforma deverá ser estruturada para permitir sua evolução e eventual integração com outras soluções utilizadas pela Cooperativa, evitando a criação de uma estrutura tecnológica isolada.
+
+8. PRINCÍPIO DA PARCERIA
+
+A proposta está fundamentada no princípio de que a tecnologia deve gerar resultado para a Cooperativa antes de gerar custo para a Cooperativa.
+
+Dessa forma, o modelo proposto procura alinhar os interesses das partes, fazendo com que a remuneração da INTEGRESERVICE esteja relacionada à capacidade da solução de:
+
+reduzir despesas + aumentar eficiência + criar novas receitas + melhorar os serviços oferecidos aos usuários.
+
+A intenção é construir uma relação de longo prazo, baseada em resultados mensuráveis, transparência e evolução tecnológica contínua.
+
+9. NATUREZA DA PRESENTE CARTA
+
+A presente Carta de Intenção representa uma manifestação preliminar de interesse das partes em avaliar e estruturar a parceria proposta.
+
+As condições definitivas, responsabilidades, níveis de serviço, critérios de remuneração, propriedade intelectual, proteção de dados, segurança da informação, integrações, rescisão, confidencialidade e demais obrigações deverão constar de instrumento contratual próprio, a ser analisado e aprovado pelas partes antes do início definitivo da operação.
+
+10. CONCLUSÃO
+
+A INTEGRESERVICE acredita que a implantação do SISCOOP3F poderá representar um importante passo para a modernização da CBSAÚDE, utilizando a tecnologia como instrumento de eficiência, transparência, redução de custos, geração de receitas e melhoria da experiência dos usuários, gestores, cooperados e parceiros.
+
+A proposta busca, sobretudo, transformar a gestão tecnológica em uma ferramenta de geração de valor para a Cooperativa, sem comprometer inicialmente sua receita corrente e com implantação planejada para preservar a continuidade dos serviços existentes.
+
+Assim, a INTEGRESERVICE manifesta seu interesse em avançar nas tratativas com a CBSAÚDE para construção conjunta do projeto e elaboração do instrumento contratual definitivo.
+
+Rio Branco – Acre, 24 de setembro de 2026.
+
+INTEGRESERVICE
+Representante: Senhor Eudemir Bezerra
+CPF/CNPJ: ______________
+Cargo/Função: Consultor
+
+CBSAÚDE – COOPERATIVA DE SAÚDE DOS SERVIDORES DO CORPO DE BOMBEIROS MILITAR DO ACRE
+
+Diretor Presidente: Senhor Alan Nogueira
+
+Representante: Senhor Alan Nogueira
+Cargo: Diretor Presidente
+
+Assinaturas:
+
+INTEGRESERVICE
+
+CBSAÚDE

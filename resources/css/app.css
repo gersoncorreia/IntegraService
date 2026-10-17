@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+@theme {
+    --font-brand: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+    /* Paleta 01 — Principal (Azul Royal & Cyan) */
+    --color-is-blue-dark: #022B5B;
+    --color-is-blue-royal: #00509D;
+    --color-is-cyan-main: #00B4D8;
+    --color-is-cyan-glow: #00E5FF;
+    --color-is-blue-tagline: #0077B6;
+    --color-is-mono-navy: #0A2E5C;
+    --color-is-bg-light: #F4F8FB;
+
+    /* Paleta 02 — Variação Azul Marinho & Turquesa (Saúde, Clínica & Telemedicina) */
+    --color-is-health-navy: #03045E;
+    --color-is-health-ocean: #0077B6;
+    --color-is-health-cyan: #00BBF9;
+    --color-is-health-turquoise: #00F5D4;
+
+    /* Paleta 03 — Variação Azul Elétrico & Azul Claro (SISCOOP3F & Dark Tech) */
+    --color-is-tech-base: #004E89;
+    --color-is-tech-sky: #48BFE3;
+    --color-is-tech-acqua: #80FFDB;
+}
+
+:root {
+    --is-blue-dark: #022B5B;
+    --is-blue-royal: #00509D;
+    --is-cyan-main: #00B4D8;
+    --is-cyan-glow: #00E5FF;
+    --is-blue-tagline: #0077B6;
+    --is-mono-navy: #0A2E5C;
+    --is-white: #FFFFFF;
+    --is-bg-light: #F4F8FB;
+    --font-brand: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    font-family: var(--font-body);
+    color: #0f172a;
+    background-color: #F4F8FB;
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-brand {
+    font-family: var(--font-brand);
+}
+
+/* ==========================================================================
+   FUNDOS ESCUROS E CLAROS COM GRADE TÉCNICA
+   ========================================================================== */
+.section-dark-hero {
+    background-color: #011328;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(135deg, #011126 0%, #022B5B 55%, #003A75 100%);
+    background-size: 48px 48px, 48px 48px, 100% 100%;
+}
+
+.section-dark-siscoop {
+    background-color: #011328;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(180deg, #011124 0%, #011C3B 50%, #022B5B 100%);
+    background-size: 48px 48px, 48px 48px, 100% 100%;
+}
+
+.section-light-grid {
+    background-color: #F4F8FB;
+    background-image:
+        linear-gradient(to right, rgba(2, 43, 91, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 43, 91, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+}
+
+/* ==========================================================================
+   COREOGRAFIA DE ENTRADA DO HERO HEADER (CINEMATOGRÁFICA & SUAVE)
+   ========================================================================== */
+@keyframes heroFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(28px);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+}
+
+@keyframes heroConsoleReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(34px) scale(0.97);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: blur(0px);
+    }
+}
+
+.hero-stagger-1 {
+    animation: heroFadeUp 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+.hero-stagger-2 {
+    animation: heroFadeUp 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+.hero-stagger-3 {
+    animation: heroFadeUp 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+}
+.hero-stagger-4 {
+    animation: heroFadeUp 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both;
+}
+.hero-stagger-5 {
+    animation: heroFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.70s both;
+}
+.hero-console-reveal {
+    animation: heroConsoleReveal 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+/* ==========================================================================
+   SISTEMA DE ANIMAÇÕES DE SCROLL (SUAVES, LENTAS E ORGÂNICAS)
+   ========================================================================== */
+@keyframes floatSubtle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-7px); }
+}
+
+@keyframes pulseRing {
+    0%, 100% { opacity: 0.45; transform: scale(1); }
+    50% { opacity: 0.95; transform: scale(1.15); }
+}
+
+.animate-float-subtle {
+    animation: floatSubtle 7.5s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+    animation: pulseRing 3.2s ease-in-out infinite;
+}
+
+.js-scroll-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.js-scroll-ready [data-reveal="left"] {
+    transform: translateX(-34px);
+}
+
+.js-scroll-ready [data-reveal="right"] {
+    transform: translateX(34px);
+}
+
+.js-scroll-ready [data-reveal="scale"] {
+    transform: scale(0.96) translateY(22px);
+}
+
+.js-scroll-ready [data-reveal].is-revealed {
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1) !important;
+}
+
+/* Delays escalonados mais espaçados para percepção visual elegante */
+.reveal-delay-1 { transition-delay: 140ms !important; }
+.reveal-delay-2 { transition-delay: 280ms !important; }
+.reveal-delay-3 { transition-delay: 420ms !important; }
+
+/* Cards Executivos com Micro-interação mais suave */
+.exec-card {
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.45s ease;
+}
+.exec-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Customização Elegante de Sliders Range */
+input[type="range"].exec-range {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.14);
+    outline: none;
+}
+input[type="range"].exec-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: #00E5FF;
+    border: 2px solid #01162E;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.65);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+input[type="range"].exec-range::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    background: #80FFDB;
+}
+
+/* Mockup 3D do Livro */
+.book-3d-wrapper {
+    perspective: 1400px;
+}
+.book-3d {
+    transform: rotateY(-12deg) rotateX(3deg);
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.75s ease;
+}
+.book-3d-wrapper:hover .book-3d {
+    transform: rotateY(-3deg) rotateX(0deg) translateY(-4px);
+}
+
+/* Transições Nativas Vue (<Transition>) mais suaves e fluidas (500ms) */
+.fade-slide-enter-active {
+    transition: opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-slide-leave-active {
+    transition: opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-slide-enter-from {
+    opacity: 0;
+    transform: translateY(16px);
+}
+.fade-slide-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+    transition: opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+}
