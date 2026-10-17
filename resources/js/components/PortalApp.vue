@@ -5,6 +5,7 @@ import AppIcon from './ui/AppIcon.vue';
 import PortalNavbar from './portal/PortalNavbar.vue';
 import HeroSection from './portal/HeroSection.vue';
 import EcosystemExplorerSection from './portal/EcosystemExplorerSection.vue';
+import InstitutionalIdentitySection from './portal/InstitutionalIdentitySection.vue';
 import SiscoopAndSimulatorSection from './portal/SiscoopAndSimulatorSection.vue';
 import ContactAndFooterSection from './portal/ContactAndFooterSection.vue';
 
@@ -117,7 +118,13 @@ const handleSelectVertical = (verticalName, users = null) => {
                 @select-vertical="handleSelectVertical"
             />
 
-            <!-- 4. Destaque Comercial SISCOOP3F & Simulador Financeiro Estruturado -->
+            <!-- 4. Identidade Institucional (Razão de Existir, Missão, Visão e Valores) -->
+            <InstitutionalIdentitySection
+                v-if="initialState.sections?.institutional_identity"
+                :identitySection="initialState.sections.institutional_identity"
+            />
+
+            <!-- 5. Destaque Comercial SISCOOP3F & Simulador Financeiro Estruturado -->
             <SiscoopAndSimulatorSection
                 :siscoop="initialState.sections?.siscoop3f"
                 :investment="initialState.sections?.investment_model"
@@ -125,7 +132,7 @@ const handleSelectVertical = (verticalName, users = null) => {
                 @select-vertical="handleSelectVertical"
             />
 
-            <!-- 5. Solicitação de Proposta & Rodapé Executivo -->
+            <!-- 6. Solicitação de Proposta & Rodapé Executivo -->
             <ContactAndFooterSection
                 :contact="initialState.sections?.contact"
                 :settings="initialState.settings"
@@ -136,7 +143,7 @@ const handleSelectVertical = (verticalName, users = null) => {
             />
         </main>
 
-        <!-- 6. Barra de Ação Rápida Mobile para Polegar (Mobile Bottom Action Dock) -->
+        <!-- 7. Barra de Ação Rápida Mobile para Polegar (Mobile Bottom Action Dock) -->
         <nav
             aria-label="Ações Rápidas Mobile"
             class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#011328]/95 backdrop-blur-md border-t border-cyan-500/30 shadow-[0_-8px_30px_rgba(1,19,40,0.6)] pb-safe"
@@ -147,7 +154,9 @@ const handleSelectVertical = (verticalName, users = null) => {
                     class="flex flex-col items-center justify-center gap-0.5 text-slate-200 active:bg-white/10 transition"
                 >
                     <AppIcon name="network" class="w-4 h-4 text-[#00E5FF]" />
-                    <span class="font-brand font-bold text-[10px] uppercase tracking-wider">5 Soluções</span>
+                    <span class="font-brand font-bold text-[10px] uppercase tracking-wider">
+                        {{ (initialState.ecosystemTabs?.length || 4) }} Soluções
+                    </span>
                 </a>
 
                 <a

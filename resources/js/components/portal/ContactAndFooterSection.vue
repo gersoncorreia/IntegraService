@@ -314,7 +314,7 @@ const submitLead = async () => {
                                         <textarea
                                             v-model="form.message"
                                             rows="3"
-                                            placeholder="Conte-nos brevemente sobre o cenário atual da sua Cooperativa, Clínica ou Empresa..."
+                                            placeholder="Conte-nos brevemente sobre o cenário atual da sua Cooperativa, Empresa ou Instituição..."
                                             class="w-full p-4 rounded bg-[#F8FAFC] border border-slate-300 focus:border-[#00509D] focus:bg-white focus:ring-2 focus:ring-[#00509D]/15 focus:outline-none text-base sm:text-sm text-slate-800 transition"
                                         ></textarea>
                                     </div>
@@ -362,10 +362,10 @@ const submitLead = async () => {
                             Ecossistema da Marca
                         </h4>
                         <ul class="space-y-2 text-sm">
+                            <li><a href="#identidade" class="hover:text-[#00E5FF] transition">Identidade: Razão de Existir, Missão, Visão & Valores</a></li>
                             <li><a href="#siscoop3f" class="hover:text-[#00E5FF] transition">SISCOOP3F — Gestão Cooperativista</a></li>
                             <li><a href="#investimento" class="hover:text-[#00E5FF] transition">Modelo de Investimento Sem Desembolso Inicial</a></li>
                             <li><a href="#ecossistema" class="hover:text-[#00E5FF] transition">Saúde Digital — Plataforma de Telemedicina</a></li>
-                            <li><a href="#ecossistema" class="hover:text-[#00E5FF] transition">A Clínica & Departamentos Especializados</a></li>
                             <li><a href="#ecossistema" class="hover:text-[#00E5FF] transition">Consultoria, Auditoria & Mentoria Executiva</a></li>
                             <li><a href="#ecossistema" class="hover:text-[#00E5FF] transition">Autoridade Geral — Livro & Publicações</a></li>
                         </ul>

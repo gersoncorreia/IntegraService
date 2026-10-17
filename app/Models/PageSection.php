@@ -16,12 +16,13 @@ class PageSection extends Model
     public const STRUCTURAL_KEYS = [
         'hero',
         'ecosystem',
+        'institutional_identity',
         'investment_model',
         'contact',
     ];
 
     /**
-     * Chaves padrão das 5 Frentes de Atuação iniciais.
+     * Chaves padrão das 4 Frentes de Atuação iniciais.
      */
     public const DEFAULT_TAB_META = [
         'siscoop3f' => [
@@ -39,14 +40,6 @@ class PageSection extends Model
             'tab_icon' => 'video',
             'tab_theme' => 'dark',
             'tab_type' => 'cards',
-        ],
-        'clinic' => [
-            'is_ecosystem_tab' => true,
-            'tab_title' => 'A Clínica',
-            'tab_subtitle' => 'Departamentos',
-            'tab_icon' => 'heart-pulse',
-            'tab_theme' => 'light',
-            'tab_type' => 'clinic',
         ],
         'consulting' => [
             'is_ecosystem_tab' => true,

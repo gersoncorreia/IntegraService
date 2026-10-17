@@ -82,6 +82,12 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                     Soluções
                 </a>
                 <a
+                    href="#identidade"
+                    class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap"
+                >
+                    Identidade
+                </a>
+                <a
                     href="#siscoop3f"
                     class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition inline-flex items-center gap-2 whitespace-nowrap"
                 >
@@ -92,10 +98,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                 </a>
                 <button
                     type="button"
-                    @click="selectTabAndScroll('clinic')"
+                    @click="selectTabAndScroll('telemedicine')"
                     class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap cursor-pointer"
                 >
-                    Saúde & Clínica
+                    Telemedicina
                 </button>
                 <button
                     type="button"
@@ -210,6 +216,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                         <span class="text-xs text-cyan-300">→</span>
                     </button>
 
+                    <a @click="mobileMenuOpen = false" href="#identidade" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
+                        <span class="font-brand font-semibold text-sm text-cyan-200">Identidade: Missão, Visão & Valores</span>
+                        <span class="text-xs text-cyan-200">↓</span>
+                    </a>
                     <a @click="mobileMenuOpen = false" href="#siscoop3f" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
                         <span class="font-brand font-semibold text-sm text-[#80FFDB]">Simulador Financeiro de Parceria</span>
                         <span class="text-xs text-[#80FFDB]">↓</span>

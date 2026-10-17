@@ -316,6 +316,8 @@
                                 Topo Principal (Hero Header)
                             @elseif($section->section_key === 'ecosystem')
                                 Cabeçalho Geral: "Nossas Frentes de Atuação"
+                            @elseif($section->section_key === 'institutional_identity')
+                                Identidade Institucional (Razão de Existir, Missão, Visão e Valores)
                             @elseif($section->section_key === 'investment_model')
                                 Os 3 Pilares Econômicos (Acima do Simulador)
                             @elseif($section->section_key === 'contact')

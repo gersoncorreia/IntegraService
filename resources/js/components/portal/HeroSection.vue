@@ -66,7 +66,7 @@ defineProps({
                     <div class="hero-stagger-5 grid grid-cols-3 divide-x divide-white/15 pt-5 sm:pt-7 border-t border-white/15 max-w-xl">
                         <div class="pr-2.5 sm:pr-6">
                             <div class="font-brand text-lg sm:text-3xl font-extrabold text-[#00E5FF] tracking-tight whitespace-nowrap">
-                                {{ hero.extra_data?.stat_1_value || '5 Soluções' }}
+                                {{ hero.extra_data?.stat_1_value || '4 Soluções' }}
                             </div>
                             <div class="text-[11px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 font-medium leading-tight">
                                 {{ hero.extra_data?.stat_1_label || 'Integradas em Rede' }}

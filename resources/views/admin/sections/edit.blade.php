@@ -136,7 +136,7 @@
                 <h3 class="font-brand text-xs font-bold uppercase tracking-wider text-[#00509D]">Os 3 Indicadores Rápidos do Hero Header</h3>
                 <div class="grid sm:grid-cols-3 gap-4">
                     <div>
-                        <input type="text" name="stat_1_value" value="{{ $extra['stat_1_value'] ?? '5 Soluções' }}" placeholder="Valor 1" class="w-full px-3 py-2 rounded bg-white border border-slate-300 text-xs font-bold mb-1">
+                        <input type="text" name="stat_1_value" value="{{ $extra['stat_1_value'] ?? '4 Soluções' }}" placeholder="Valor 1" class="w-full px-3 py-2 rounded bg-white border border-slate-300 text-xs font-bold mb-1">
                         <input type="text" name="stat_1_label" value="{{ $extra['stat_1_label'] ?? 'Integradas em Rede' }}" placeholder="Legenda 1" class="w-full px-3 py-2 rounded bg-white border border-slate-300 text-xs">
                     </div>
                     <div>
@@ -147,6 +147,42 @@
                         <input type="text" name="stat_3_value" value="{{ $extra['stat_3_value'] ?? 'R$ 0,00' }}" placeholder="Valor 3" class="w-full px-3 py-2 rounded bg-white border border-slate-300 text-xs font-bold mb-1">
                         <input type="text" name="stat_3_label" value="{{ $extra['stat_3_label'] ?? 'Desembolso Inicial' }}" placeholder="Legenda 3" class="w-full px-3 py-2 rounded bg-white border border-slate-300 text-xs">
                     </div>
+                </div>
+            </div>
+        @elseif($section->section_key === 'institutional_identity')
+            @php $extra = $section->extra_data ?? []; @endphp
+            <div class="p-5 rounded-md bg-[#F4F8FB] border border-slate-200 border-l-4 border-l-[#022B5B] space-y-4">
+                <h3 class="font-brand text-xs font-bold uppercase tracking-wider text-[#022B5B]">
+                    Diretrizes Institucionais (Razão de Existir, Missão, Visão e Valores)
+                </h3>
+
+                <div>
+                    <label class="block text-xs font-brand font-bold uppercase text-[#00509D] mb-1">Título: Razão de Existir</label>
+                    <input type="text" name="purpose_label" value="{{ $extra['purpose_label'] ?? 'Razão de Existir' }}" class="w-full px-3.5 py-2 rounded bg-white border border-slate-300 text-xs font-bold mb-2">
+                    <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1">Texto da Razão de Existir</label>
+                    <textarea name="purpose_text" rows="2" class="w-full px-3.5 py-2.5 rounded bg-white border border-slate-300 text-sm">{{ $extra['purpose_text'] ?? '' }}</textarea>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-brand font-bold uppercase text-[#00509D] mb-1">Título: Missão</label>
+                        <input type="text" name="mission_label" value="{{ $extra['mission_label'] ?? 'Missão' }}" class="w-full px-3.5 py-2 rounded bg-white border border-slate-300 text-xs font-bold mb-2">
+                        <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1">Texto da Missão</label>
+                        <textarea name="mission_text" rows="3" class="w-full px-3.5 py-2.5 rounded bg-white border border-slate-300 text-sm">{{ $extra['mission_text'] ?? '' }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-brand font-bold uppercase text-[#00509D] mb-1">Título: Visão</label>
+                        <input type="text" name="vision_label" value="{{ $extra['vision_label'] ?? 'Visão' }}" class="w-full px-3.5 py-2 rounded bg-white border border-slate-300 text-xs font-bold mb-2">
+                        <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1">Texto da Visão</label>
+                        <textarea name="vision_text" rows="3" class="w-full px-3.5 py-2.5 rounded bg-white border border-slate-300 text-sm">{{ $extra['vision_text'] ?? '' }}</textarea>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-brand font-bold uppercase text-[#00509D] mb-1">Título: Valores</label>
+                    <input type="text" name="values_label" value="{{ $extra['values_label'] ?? 'Valores Institucionais' }}" class="w-full px-3.5 py-2 rounded bg-white border border-slate-300 text-xs font-bold mb-2">
+                    <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1">Lista de Valores (separados por vírgula)</label>
+                    <textarea name="values_text" rows="2" class="w-full px-3.5 py-2.5 rounded bg-white border border-slate-300 text-sm">{{ $extra['values_text'] ?? '' }}</textarea>
                 </div>
             </div>
         @endif

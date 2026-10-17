@@ -42,11 +42,6 @@
                         <span>Frentes de Atuação & Seções</span>
                     </a>
 
-                    <a href="{{ route('admin.departments.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl font-brand font-semibold transition {{ request()->routeIs('admin.departments.*') ? 'bg-gradient-to-r from-[#00509D] to-[#00B4D8] text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white' }}">
-                        <x-icon name="heart-pulse" class="w-5 h-5" />
-                        <span>Clínica & Departamentos</span>
-                    </a>
-
                     <a href="{{ route('admin.publications.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl font-brand font-semibold transition {{ request()->routeIs('admin.publications.*') ? 'bg-gradient-to-r from-[#00509D] to-[#00B4D8] text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white' }}">
                         <x-icon name="book-open" class="w-5 h-5" />
                         <span>Livro & Publicações</span>
@@ -109,8 +104,7 @@
             <!-- Navegação Rápida Mobile -->
             <div class="lg:hidden bg-[#021B3A] text-white px-4 py-2.5 flex items-center gap-2 overflow-x-auto text-xs font-brand font-semibold">
                 <a href="{{ route('admin.dashboard') }}" class="px-3 py-1.5 rounded-lg bg-white/10 shrink-0">Dashboard</a>
-                <a href="{{ route('admin.sections.index') }}" class="px-3 py-1.5 rounded-lg bg-white/10 shrink-0">Seções & Cards</a>
-                <a href="{{ route('admin.departments.index') }}" class="px-3 py-1.5 rounded-lg bg-white/10 shrink-0">Clínica</a>
+                <a href="{{ route('admin.sections.index') }}" class="px-3 py-1.5 rounded-lg bg-white/10 shrink-0">Frentes & Seções</a>
                 <a href="{{ route('admin.publications.index') }}" class="px-3 py-1.5 rounded-lg bg-white/10 shrink-0">Livro</a>
                 <a href="{{ route('admin.settings') }}" class="px-3 py-1.5 rounded-lg bg-white/10 shrink-0">Configurações</a>
                 <a href="{{ route('admin.leads.index') }}" class="px-3 py-1.5 rounded-lg bg-white/10 shrink-0">Propostas</a>

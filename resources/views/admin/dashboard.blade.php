@@ -15,11 +15,11 @@
             </div>
         </a>
 
-        <a href="{{ route('admin.departments.index') }}" class="p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#00B4D8] shadow-sm transition group">
-            <span class="text-xs font-brand font-bold uppercase tracking-wider text-slate-400">Clínica & Departamentos</span>
+        <a href="{{ route('admin.sections.index') }}" class="p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#00B4D8] shadow-sm transition group">
+            <span class="text-xs font-brand font-bold uppercase tracking-wider text-slate-400">Frentes de Atuação</span>
             <div class="flex items-baseline justify-between mt-2">
-                <span class="font-brand text-3xl font-extrabold text-[#022B5B]">{{ $departmentsCount }}</span>
-                <span class="text-xs font-semibold text-[#0077B6] group-hover:translate-x-1 transition-transform">Gerenciar →</span>
+                <span class="font-brand text-3xl font-extrabold text-[#022B5B]">{{ $activeEcosystemTabsCount }}/{{ $ecosystemTabsCount }}</span>
+                <span class="text-xs font-semibold text-[#0077B6] group-hover:translate-x-1 transition-transform">Habilitar / Criar →</span>
             </div>
         </a>
 

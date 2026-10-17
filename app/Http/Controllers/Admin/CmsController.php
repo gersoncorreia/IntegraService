@@ -123,12 +123,23 @@ class CmsController extends Controller
         $heroExtra = [];
         if ($section->section_key === 'hero') {
             $heroExtra = [
-                'stat_1_value' => $request->input('stat_1_value', '5 Soluções'),
+                'stat_1_value' => $request->input('stat_1_value', '4 Soluções'),
                 'stat_1_label' => $request->input('stat_1_label', 'Integradas em Rede'),
                 'stat_2_value' => $request->input('stat_2_value', '30 Dias'),
                 'stat_2_label' => $request->input('stat_2_label', 'Implantação Gratuita'),
                 'stat_3_value' => $request->input('stat_3_value', 'R$ 0,00'),
                 'stat_3_label' => $request->input('stat_3_label', 'Desembolso Inicial'),
+            ];
+        } elseif ($section->section_key === 'institutional_identity') {
+            $heroExtra = [
+                'purpose_label' => $request->input('purpose_label', 'Razão de Existir'),
+                'purpose_text' => $request->input('purpose_text', ''),
+                'mission_label' => $request->input('mission_label', 'Missão'),
+                'mission_text' => $request->input('mission_text', ''),
+                'vision_label' => $request->input('vision_label', 'Visão'),
+                'vision_text' => $request->input('vision_text', ''),
+                'values_label' => $request->input('values_label', 'Nossos Valores Inegociáveis'),
+                'values_text' => $request->input('values_text', ''),
             ];
         }
 

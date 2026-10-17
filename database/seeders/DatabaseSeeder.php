@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'whatsapp_number' => '5568999990000',
             'siscoop3f_url' => 'https://siscoop3f.com.br/',
             'telemedicine_url' => 'https://app.consulttelemedicia.com.br/login',
-            'footer_description' => 'Hub centralizador de gestão cooperativista (SISCOOP3F), Telemedicina 24/7, Clínica de Especialidades, Consultoria Executiva e Autoridade Científica.',
+            'footer_description' => 'Hub centralizador de gestão cooperativista (SISCOOP3F), Telemedicina 24/7, Consultoria Executiva e Autoridade Científica.',
             'footer_copyright' => 'IntegreService (IS) — Rede de Serviços & Tecnologia. Todos os direitos reservados.',
             'sim_trial_days' => 30,
             'sim_savings_share_percent' => 30,
@@ -57,20 +57,20 @@ class DatabaseSeeder extends Seeder
         $hero = PageSection::create([
             'section_key' => 'hero',
             'nav_label' => 'Início',
-            'badge_text' => 'REDE INTEGRADA DE SAÚDE, COOPERATIVISMO & GESTÃO',
+            'badge_text' => 'REDE INTEGRADA DE SAÚDE DIGITAL, COOPERATIVISMO & GESTÃO',
             'title' => 'Tecnologia e Inteligência que geram',
             'highlighted_word' => 'Resultado Real',
-            'subtitle' => 'Unimos gestão cooperativista digital (SISCOOP3F), Telemedicina 24/7, Clínica de Especialidades e Consultoria Executiva em um único ecossistema.',
+            'subtitle' => 'Unimos gestão cooperativista digital (SISCOOP3F), Telemedicina 24/7, Consultoria Executiva e Base Científica em um único ecossistema.',
             'description' => 'Modelo exclusivo para cooperativas: 30 dias de implantação sem custo e zero desembolso inicial da receita corrente.',
             'primary_cta_text' => 'Solicitar Proposta Comercial',
             'primary_cta_url' => '#contato',
-            'secondary_cta_text' => 'Conhecer as 5 Soluções',
+            'secondary_cta_text' => 'Conhecer as 4 Soluções',
             'secondary_cta_url' => '#ecossistema',
             'palette' => 'paleta_01',
             'sort_order' => 1,
             'is_active' => true,
             'extra_data' => [
-                'stat_1_value' => '5 Soluções',
+                'stat_1_value' => '4 Soluções',
                 'stat_1_label' => 'Integradas em Rede',
                 'stat_2_value' => '30 Dias',
                 'stat_2_label' => 'Implantação Gratuita',
@@ -79,11 +79,11 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        // SEÇÃO 2: ECOSSISTEMA (5 VERTICAIS CONCISAS)
+        // SEÇÃO 2: ECOSSISTEMA (4 VERTICAIS CONCISAS)
         $ecosystem = PageSection::create([
             'section_key' => 'ecosystem',
             'nav_label' => 'Ecossistema',
-            'badge_text' => 'NOSSAS 5 FRENTES DE ATUAÇÃO',
+            'badge_text' => 'NOSSAS 4 FRENTES DE ATUAÇÃO',
             'title' => 'Tudo o que sua instituição precisa em',
             'highlighted_word' => 'um único lugar',
             'subtitle' => 'Selecione abaixo uma área de atuação para explorar os recursos de forma rápida e direta.',
@@ -123,18 +123,6 @@ class DatabaseSeeder extends Seeder
                 'sort_order' => 2,
             ],
             [
-                'badge' => 'ATENDIMENTO PRESENCIAL',
-                'title' => 'A Clínica & Especialidades',
-                'subtitle' => 'Departamentos médicos integrados',
-                'description' => 'Cuidado presencial humanizado conectado ao prontuário digital e à autorização rápida de guias dos cooperados.',
-                'highlight_metric' => 'Multidisciplinar',
-                'icon' => 'heart-pulse',
-                'accent_color' => 'turquoise',
-                'link_text' => 'Ver Departamentos',
-                'link_url' => '#ecossistema',
-                'sort_order' => 3,
-            ],
-            [
                 'badge' => 'ALTA GESTÃO',
                 'title' => 'Consultoria, Auditoria & Mentoria',
                 'subtitle' => 'Liderança técnica: Eudemir Bezerra',
@@ -144,7 +132,7 @@ class DatabaseSeeder extends Seeder
                 'accent_color' => 'royal',
                 'link_text' => 'Solicitar Consultoria',
                 'link_url' => '#contato',
-                'sort_order' => 4,
+                'sort_order' => 3,
             ],
             [
                 'badge' => 'BASE CIENTÍFICA',
@@ -156,14 +144,42 @@ class DatabaseSeeder extends Seeder
                 'accent_color' => 'cyan',
                 'link_text' => 'Conhecer o Livro',
                 'link_url' => '#ecossistema',
-                'sort_order' => 5,
+                'sort_order' => 4,
             ],
         ];
         foreach ($ecoItems as $item) {
             $ecosystem->items()->create($item);
         }
 
-        // SEÇÃO 3: SISCOOP3F (DIFERENCIAIS DIRETOS)
+        // SEÇÃO 3: IDENTIDADE INSTITUCIONAL (RAZÃO DE EXISTIR, MISSÃO, VISÃO E VALORES)
+        PageSection::create([
+            'section_key' => 'institutional_identity',
+            'nav_label' => 'Identidade Institucional',
+            'badge_text' => 'DIRETRIZES ESTRATÉGICAS • GOVERNANÇA & PROPÓSITO',
+            'title' => 'A base institucional que guia',
+            'highlighted_word' => 'nossa atuação',
+            'subtitle' => 'Princípios sólidos de gestão, tecnologia e cooperação que sustentam cada entrega da IntegreService.',
+            'description' => '',
+            'primary_cta_text' => 'Conhecer Modelo de Parceria',
+            'primary_cta_url' => '#siscoop3f',
+            'secondary_cta_text' => 'Falar com a Diretoria',
+            'secondary_cta_url' => '#contato',
+            'palette' => 'paleta_01',
+            'sort_order' => 3,
+            'is_active' => true,
+            'extra_data' => [
+                'purpose_label' => 'Razão de Existir',
+                'purpose_text' => 'Integrar conhecimento, gestão, tecnologia e serviços especializados para ajudar pessoas e organizações a crescer, melhorar seus resultados e gerar valor sustentável.',
+                'mission_label' => 'Missão',
+                'mission_text' => 'Desenvolver e integrar soluções empresariais, tecnológicas e de saúde por meio de conhecimento, inovação, consultoria e parcerias estratégicas, promovendo eficiência, acesso e sustentabilidade.',
+                'vision_label' => 'Visão',
+                'vision_text' => 'Ser reconhecida como uma empresa de referência na integração de negócios, gestão digital, consultoria e soluções de saúde, com atuação regional e capacidade de expansão nacional.',
+                'values_label' => 'Valores Institucionais',
+                'values_text' => 'Integridade, cooperação, inovação, transparência, excelência técnica, responsabilidade, segurança da informação, compromisso com resultados e valorização das pessoas.',
+            ],
+        ]);
+
+        // SEÇÃO 4: SISCOOP3F (DIFERENCIAIS DIRETOS)
         $siscoop = PageSection::create([
             'section_key' => 'siscoop3f',
             'nav_label' => 'SISCOOP3F',
@@ -177,7 +193,7 @@ class DatabaseSeeder extends Seeder
             'secondary_cta_text' => 'Solicitar Carta de Intenção',
             'secondary_cta_url' => '#contato',
             'palette' => 'paleta_03',
-            'sort_order' => 3,
+            'sort_order' => 4,
             'is_active' => true,
         ]);
 
@@ -217,7 +233,7 @@ class DatabaseSeeder extends Seeder
             $siscoop->items()->create($item);
         }
 
-        // SEÇÃO 4: MODELO DE INVESTIMENTO (OS 3 PILARES DA CARTA DE INTENÇÃO)
+        // SEÇÃO 5: MODELO DE INVESTIMENTO (OS 3 PILARES DA CARTA DE INTENÇÃO)
         $investment = PageSection::create([
             'section_key' => 'investment_model',
             'nav_label' => 'Modelo de Parceria',
@@ -231,7 +247,7 @@ class DatabaseSeeder extends Seeder
             'secondary_cta_text' => 'Falar no WhatsApp',
             'secondary_cta_url' => '#contato',
             'palette' => 'paleta_03',
-            'sort_order' => 4,
+            'sort_order' => 5,
             'is_active' => true,
         ]);
 
@@ -271,7 +287,7 @@ class DatabaseSeeder extends Seeder
             $investment->items()->create($item);
         }
 
-        // SEÇÃO 5: TELEMEDICINA
+        // SEÇÃO 6: TELEMEDICINA
         $telemedicine = PageSection::create([
             'section_key' => 'telemedicine',
             'nav_label' => 'Telemedicina',
@@ -285,7 +301,7 @@ class DatabaseSeeder extends Seeder
             'secondary_cta_text' => 'Implantar na Minha Instituição',
             'secondary_cta_url' => '#contato',
             'palette' => 'paleta_02',
-            'sort_order' => 5,
+            'sort_order' => 6,
             'is_active' => true,
         ]);
 
@@ -314,7 +330,7 @@ class DatabaseSeeder extends Seeder
                 'badge' => 'EFICIÊNCIA ASSISTENCIAL',
                 'title' => 'Redução de Sinistralidade',
                 'subtitle' => 'Triagem clínica inteligente',
-                'description' => 'Resolve até 80% dos casos sem sobrecarregar clínicas e hospitais.',
+                'description' => 'Resolve até 80% dos casos sem sobrecarregar unidades de pronto atendimento.',
                 'highlight_metric' => '-Custos',
                 'icon' => 'heart-pulse',
                 'accent_color' => 'turquoise',
@@ -324,24 +340,6 @@ class DatabaseSeeder extends Seeder
         foreach ($teleItems as $item) {
             $telemedicine->items()->create($item);
         }
-
-        // SEÇÃO 6: A CLÍNICA
-        PageSection::create([
-            'section_key' => 'clinic',
-            'nav_label' => 'A Clínica',
-            'badge_text' => 'SAÚDE PRESENCIAL & ESPECIALIDADES',
-            'title' => 'A Clínica IntegreService e seus',
-            'highlighted_word' => 'Departamentos',
-            'subtitle' => 'Atendimento presencial multidisciplinar conectado ao ecossistema digital.',
-            'description' => '',
-            'primary_cta_text' => 'Agendar Atendimento',
-            'primary_cta_url' => '#contato',
-            'secondary_cta_text' => 'Acessar Telemedicina',
-            'secondary_cta_url' => 'https://app.consulttelemedicia.com.br/login',
-            'palette' => 'paleta_02',
-            'sort_order' => 6,
-            'is_active' => true,
-        ]);
 
         // SEÇÃO 7: CONSULTORIA
         $consulting = PageSection::create([
@@ -422,7 +420,7 @@ class DatabaseSeeder extends Seeder
             'badge_text' => 'ATENDIMENTO EXECUTIVO & COMERCIAL',
             'title' => 'Vamos levar a IntegreService para a',
             'highlighted_word' => 'sua Instituição?',
-            'subtitle' => 'Solicite uma proposta personalizada do SISCOOP3F (com 30 dias sem custo), Telemedicina, Clínica ou Consultoria.',
+            'subtitle' => 'Solicite uma proposta personalizada do SISCOOP3F (com 30 dias sem custo), Telemedicina ou Consultoria Executiva.',
             'description' => '',
             'primary_cta_text' => 'Enviar Solicitação',
             'primary_cta_url' => '#form-proposta',
@@ -433,64 +431,8 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
         ]);
 
-        // 3. Departamentos da Clínica (Textos enxutos)
+        // 3. Limpa registros antigos de departamentos de clínica (Clínica não entra como serviço)
         ClinicDepartment::query()->delete();
-        $departments = [
-            [
-                'name' => 'Clínica Médica & Diagnóstico',
-                'custom_tagline' => 'Clínica Médica & Especialidades',
-                'badge' => 'UNIDADE CENTRAL',
-                'short_description' => 'Atendimento clínico preventivo, check-up executivo e acompanhamento integrado ao prontuário digital.',
-                'full_description' => '',
-                'features' => [
-                    'Agendamento online sem filas',
-                    'Prontuário integrado à Telemedicina',
-                    'Check-up para cooperados e empresas',
-                    'Emissão digital de guias SISCOOP3F',
-                ],
-                'icon' => 'heart-pulse',
-                'cta_text' => 'Agendar Atendimento',
-                'sort_order' => 1,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Especialidades Médicas',
-                'custom_tagline' => 'Especialidades & Alta Precisão',
-                'badge' => 'CORPO CLÍNICO',
-                'short_description' => 'Especialistas multidisciplinares com resolutividade ágil e interconsulta digital.',
-                'full_description' => '',
-                'features' => [
-                    'Atendimento por linhas de cuidado',
-                    'Pareceres técnicos rápidos',
-                    'Acompanhamento pós-consulta digital',
-                    'Padrão de excelência IntegreService',
-                ],
-                'icon' => 'sparkles',
-                'cta_text' => 'Consultar Especialidades',
-                'sort_order' => 2,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Saúde Corporativa & Cooperados',
-                'custom_tagline' => 'Saúde Corporativa & Cooperativista',
-                'badge' => 'GESTÃO DE SAÚDE',
-                'short_description' => 'Programas de prevenção, qualidade de vida e redução de custos assistenciais para cooperativas.',
-                'full_description' => '',
-                'features' => [
-                    'Monitoramento de pacientes crônicos',
-                    'Relatórios gerenciais para diretorias',
-                    'Redução de sinistralidade hospitalar',
-                    'Cuidado híbrido (Presencial + Digital)',
-                ],
-                'icon' => 'shield-check',
-                'cta_text' => 'Solicitar Proposta',
-                'sort_order' => 3,
-                'is_active' => true,
-            ],
-        ];
-        foreach ($departments as $dept) {
-            ClinicDepartment::create($dept);
-        }
 
         // 4. Publicações & Livro Oficial (Enxuto)
         Publication::query()->delete();
