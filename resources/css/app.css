@@ -46,6 +46,7 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
@@ -184,10 +185,20 @@ h1, h2, h3, h4, .font-brand {
     transform: translate(0, 0) scale(1) !important;
 }
 
-/* Delays escalonados mais espaçados para percepção visual elegante */
 .reveal-delay-1 { transition-delay: 140ms !important; }
 .reveal-delay-2 { transition-delay: 280ms !important; }
 .reveal-delay-3 { transition-delay: 420ms !important; }
+
+/* No mobile, evitamos deslocamento lateral excessivo para manter fluidez */
+@media (max-width: 640px) {
+    .js-scroll-ready [data-reveal="left"],
+    .js-scroll-ready [data-reveal="right"] {
+        transform: translateY(24px);
+    }
+    .animate-float-subtle {
+        animation: none;
+    }
+}
 
 /* Cards Executivos com Micro-interação mais suave */
 .exec-card {
@@ -199,20 +210,21 @@ h1, h2, h3, h4, .font-brand {
     transform: translateY(-4px);
 }
 
-/* Customização Elegante de Sliders Range */
+/* Customização Elegante de Sliders Range (Com suporte Touch ampliado no Mobile) */
 input[type="range"].exec-range {
     -webkit-appearance: none;
     appearance: none;
-    height: 6px;
+    height: 7px;
     border-radius: 3px;
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.16);
     outline: none;
+    touch-action: pan-y;
 }
 input[type="range"].exec-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border-radius: 4px;
     background: #00E5FF;
     border: 2px solid #01162E;
@@ -223,6 +235,31 @@ input[type="range"].exec-range::-webkit-slider-thumb {
 input[type="range"].exec-range::-webkit-slider-thumb:hover {
     transform: scale(1.15);
     background: #80FFDB;
+}
+
+@media (pointer: coarse) {
+    input[type="range"].exec-range {
+        height: 9px;
+    }
+    input[type="range"].exec-range::-webkit-slider-thumb {
+        width: 26px;
+        height: 26px;
+        border-radius: 5px;
+    }
+}
+
+/* Utilitário para esconder barra de rolagem horizontal mantendo scroll touch suave */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Safe area para iPhones com barra Home inferior */
+.pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* Mockup 3D do Livro */
@@ -238,7 +275,7 @@ input[type="range"].exec-range::-webkit-slider-thumb:hover {
     transform: rotateY(-3deg) rotateX(0deg) translateY(-4px);
 }
 
-/* Transições Nativas Vue (<Transition>) mais suaves e fluidas (500ms) */
+/* Transições Nativas Vue (<Transition>) mais suaves e fluidas (520ms) */
 .fade-slide-enter-active {
     transition: opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
                 transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);

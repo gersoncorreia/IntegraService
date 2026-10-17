@@ -34,11 +34,11 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
             'sticky top-0 z-40 w-full transition-all duration-300',
             scrolled
                 ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(2,43,91,0.06)] border-b border-slate-200 py-2.5'
-                : 'bg-white border-b border-slate-200/80 py-3'
+                : 'bg-white border-b border-slate-200/80 py-2.5 sm:py-3'
         ]"
     >
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-            <!-- Logo Oficial -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
+            <!-- Logo Oficial Responsiva -->
             <BrandLogo
                 :part1="settings.brand_part_1"
                 :part2="settings.brand_part_2"
@@ -49,7 +49,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                 href="#inicio"
             />
 
-            <!-- Navegação Central Executiva (Sem pílulas redondas genéricas) -->
+            <!-- Navegação Central Executiva (Desktop) -->
             <nav class="hidden lg:flex items-center gap-0.5">
                 <a
                     href="#ecossistema"
@@ -88,7 +88,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                 </a>
             </nav>
 
-            <!-- Ações Direitas de Precisão -->
+            <!-- Ações Direitas de Precisão (Tablet & Desktop) -->
             <div class="hidden sm:flex items-center gap-2.5 shrink-0">
                 <a
                     v-if="isAuthenticated"
@@ -116,35 +116,97 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                 </a>
             </div>
 
-            <!-- Botão Menu Mobile -->
-            <button
-                @click="mobileMenuOpen = !mobileMenuOpen"
-                type="button"
-                class="lg:hidden p-2 rounded text-[#022B5B] bg-slate-100 hover:bg-slate-200 border border-slate-200 transition"
-                aria-label="Abrir Menu"
-            >
-                <span v-if="!mobileMenuOpen" class="font-bold text-lg">☰</span>
-                <span v-else class="font-bold text-lg">✕</span>
-            </button>
+            <!-- Controles Mobile (Botão Plataformas + Hambúrguer Executivo) -->
+            <div class="flex lg:hidden items-center gap-2 shrink-0">
+                <button
+                    @click="emit('open-platforms')"
+                    type="button"
+                    class="sm:hidden h-9 px-2.5 rounded font-brand font-bold text-[11px] text-[#022B5B] bg-slate-100 border border-slate-200 inline-flex items-center gap-1.5 whitespace-nowrap"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>Sistemas</span>
+                </button>
+
+                <button
+                    @click="mobileMenuOpen = !mobileMenuOpen"
+                    type="button"
+                    class="h-9 w-9 rounded text-[#022B5B] bg-slate-100 hover:bg-slate-200 border border-slate-200 inline-flex items-center justify-center transition"
+                    aria-label="Abrir Menu"
+                >
+                    <span v-if="!mobileMenuOpen" class="font-bold text-base leading-none">☰</span>
+                    <span v-else class="font-bold text-base leading-none">✕</span>
+                </button>
+            </div>
         </div>
 
-        <!-- Menu Mobile -->
+        <!-- Menu Mobile Drawer Executivo (Swiss-Grid) -->
         <Transition name="fade-slide">
-            <div v-if="mobileMenuOpen" class="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-5 space-y-2 shadow-xl">
-                <div class="grid grid-cols-2 gap-2 pb-3 border-b border-slate-100">
-                    <a :href="settings.siscoop3f_url" target="_blank" class="flex items-center justify-center py-2.5 px-3 rounded bg-[#022B5B] text-white font-brand font-bold text-xs">
-                        SISCOOP3F ↗
-                    </a>
-                    <a :href="settings.telemedicine_url" target="_blank" class="flex items-center justify-center py-2.5 px-3 rounded bg-[#0077B6] text-white font-brand font-bold text-xs">
-                        Telemedicina ↗
+            <div v-if="mobileMenuOpen" class="lg:hidden bg-[#011328] text-white border-b border-cyan-500/30 px-4 pt-4 pb-6 space-y-4 shadow-2xl">
+                <!-- Acesso Rápido às 2 Plataformas no Topo do Menu Mobile -->
+                <div class="space-y-1.5">
+                    <span class="text-[10px] font-brand font-bold uppercase tracking-[0.14em] text-cyan-300 block">
+                        Acesso Direto às Plataformas Online
+                    </span>
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <a
+                            :href="settings.siscoop3f_url"
+                            target="_blank"
+                            rel="noopener"
+                            class="flex items-center justify-between py-2.5 px-3 rounded bg-white/[0.06] border border-white/10 border-l-2 border-l-[#80FFDB] font-brand font-bold text-xs text-white"
+                        >
+                            <span>SISCOOP3F</span>
+                            <span class="text-[#80FFDB]">↗</span>
+                        </a>
+                        <a
+                            :href="settings.telemedicine_url"
+                            target="_blank"
+                            rel="noopener"
+                            class="flex items-center justify-between py-2.5 px-3 rounded bg-white/[0.06] border border-white/10 border-l-2 border-l-[#00F5D4] font-brand font-bold text-xs text-white"
+                        >
+                            <span>Telemedicina</span>
+                            <span class="text-[#00F5D4]">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navegação Numerada das 5 Verticais -->
+                <div class="space-y-1 pt-2 border-t border-white/10">
+                    <span class="text-[10px] font-brand font-bold uppercase tracking-[0.14em] text-slate-400 block mb-1.5">
+                        Navegação do Portal
+                    </span>
+                    <button type="button" @click="selectTabAndScroll('siscoop3f')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
+                        <span class="font-brand font-semibold text-sm text-white">01 • SISCOOP3F (Cooperativas)</span>
+                        <span class="text-[10px] font-brand font-bold px-1.5 py-0.5 rounded-xs bg-[#80FFDB]/15 text-[#80FFDB]">30d Free</span>
+                    </button>
+                    <button type="button" @click="selectTabAndScroll('telemedicine')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
+                        <span class="font-brand font-semibold text-sm text-white">02 • Telemedicina 24/7</span>
+                        <span class="text-xs text-cyan-300">→</span>
+                    </button>
+                    <button type="button" @click="selectTabAndScroll('clinic')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
+                        <span class="font-brand font-semibold text-sm text-white">03 • A Clínica & Departamentos</span>
+                        <span class="text-xs text-cyan-300">→</span>
+                    </button>
+                    <button type="button" @click="selectTabAndScroll('consulting')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
+                        <span class="font-brand font-semibold text-sm text-white">04 • Consultoria & Auditoria</span>
+                        <span class="text-xs text-cyan-300">→</span>
+                    </button>
+                    <button type="button" @click="selectTabAndScroll('book')" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08] text-left">
+                        <span class="font-brand font-semibold text-sm text-white">05 • O Livro & Publicações</span>
+                        <span class="text-xs text-cyan-300">→</span>
+                    </button>
+                    <a @click="mobileMenuOpen = false" href="#siscoop3f" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
+                        <span class="font-brand font-semibold text-sm text-[#80FFDB]">Simulador Financeiro de Parceria</span>
+                        <span class="text-xs text-[#80FFDB]">↓</span>
                     </a>
                 </div>
-                <a @click="mobileMenuOpen = false" href="#ecossistema" class="block px-3 py-2 rounded font-brand font-semibold text-sm text-[#022B5B] hover:bg-slate-50">Soluções (Ecossistema)</a>
-                <a @click="mobileMenuOpen = false" href="#siscoop3f" class="block px-3 py-2 rounded font-brand font-semibold text-sm text-[#022B5B] hover:bg-slate-50">SISCOOP3F & Parceria</a>
-                <button type="button" @click="selectTabAndScroll('clinic')" class="w-full text-left block px-3 py-2 rounded font-brand font-semibold text-sm text-[#022B5B] hover:bg-slate-50">Saúde & Clínica</button>
-                <button type="button" @click="selectTabAndScroll('consulting')" class="w-full text-left block px-3 py-2 rounded font-brand font-semibold text-sm text-[#022B5B] hover:bg-slate-50">Consultoria & Livro</button>
-                <a @click="mobileMenuOpen = false" href="#contato" class="block w-full text-center mt-2 py-3 rounded font-brand font-bold text-xs uppercase tracking-wider text-white bg-[#022B5B]">
-                    Solicitar Proposta
+
+                <!-- CTA Principal Mobile -->
+                <a
+                    @click="mobileMenuOpen = false"
+                    href="#contato"
+                    class="block w-full text-center py-3.5 rounded font-brand font-bold text-xs uppercase tracking-[0.12em] text-[#01162E] bg-[#00E5FF]"
+                >
+                    Solicitar Proposta Comercial →
                 </a>
             </div>
         </Transition>

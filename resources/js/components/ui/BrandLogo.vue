@@ -12,22 +12,22 @@ const props = defineProps({
 });
 
 const iconSizeClass = computed(() => ({
-    sm: 'h-9',
-    md: 'h-11',
-    lg: 'h-15',
-}[props.size] || 'h-11'));
+    sm: 'h-8 sm:h-9',
+    md: 'h-10 sm:h-11',
+    lg: 'h-13 sm:h-15',
+}[props.size] || 'h-10 sm:h-11'));
 
 const titleSizeClass = computed(() => ({
-    sm: 'text-lg',
-    md: 'text-[22px] lg:text-[24px]',
-    lg: 'text-3xl',
-}[props.size] || 'text-[22px] lg:text-[24px]'));
+    sm: 'text-[17px] sm:text-lg',
+    md: 'text-xl sm:text-[22px] lg:text-[24px]',
+    lg: 'text-2xl sm:text-3xl',
+}[props.size] || 'text-xl sm:text-[22px] lg:text-[24px]'));
 
 const taglineSizeClass = computed(() => ({
-    sm: 'text-[8.5px]',
-    md: 'text-[9.5px] lg:text-[10px]',
-    lg: 'text-xs',
-}[props.size] || 'text-[9.5px] lg:text-[10px]'));
+    sm: 'text-[7.5px] sm:text-[8.5px]',
+    md: 'text-[8.5px] sm:text-[9.5px] lg:text-[10px]',
+    lg: 'text-[10px] sm:text-xs',
+}[props.size] || 'text-[8.5px] sm:text-[9.5px] lg:text-[10px]'));
 
 const part1ColorClass = computed(() => ({
     light: 'text-[#022B5B]',
@@ -54,7 +54,7 @@ const taglineColorClass = computed(() => ({
 <template>
     <a
         :href="href"
-        class="inline-flex items-center gap-3 group select-none no-underline shrink-0"
+        class="inline-flex items-center gap-2.5 sm:gap-3 group select-none no-underline shrink-0 min-w-0"
         :aria-label="`${part1}${part2} - ${tagline}`"
     >
         <div class="relative flex items-center justify-center shrink-0">
@@ -65,12 +65,12 @@ const taglineColorClass = computed(() => ({
                 :class="[iconSizeClass, 'w-auto object-contain relative z-10 drop-shadow-[0_2px_8px_rgba(0,180,216,0.22)] transition-transform duration-300 group-hover:scale-105']"
             />
         </div>
-        <div class="flex flex-col justify-center leading-none whitespace-nowrap">
+        <div class="flex flex-col justify-center leading-none min-w-0">
             <div :class="['font-brand tracking-[-0.02em] m-0 flex items-baseline whitespace-nowrap', titleSizeClass]">
                 <span :class="['font-extrabold transition-colors duration-300', part1ColorClass]">{{ part1 }}</span>
                 <span :class="['font-medium tracking-[-0.01em] transition-colors duration-300', part2ColorClass]">{{ part2 }}</span>
             </div>
-            <span :class="['font-brand font-semibold tracking-[0.08em] uppercase mt-1 transition-all duration-300 whitespace-nowrap', taglineSizeClass, taglineColorClass]">
+            <span :class="['font-brand font-semibold tracking-[0.06em] sm:tracking-[0.08em] uppercase mt-1 transition-all duration-300 truncate', taglineSizeClass, taglineColorClass]">
                 {{ tagline }}
             </span>
         </div>

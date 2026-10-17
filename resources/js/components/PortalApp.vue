@@ -1,13 +1,14 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import BrandLogo from './ui/BrandLogo.vue';
+import AppIcon from './ui/AppIcon.vue';
 import PortalNavbar from './portal/PortalNavbar.vue';
 import HeroSection from './portal/HeroSection.vue';
 import EcosystemExplorerSection from './portal/EcosystemExplorerSection.vue';
 import SiscoopAndSimulatorSection from './portal/SiscoopAndSimulatorSection.vue';
 import ContactAndFooterSection from './portal/ContactAndFooterSection.vue';
 
-defineProps({
+const props = defineProps({
     initialState: { type: Object, required: true },
 });
 
@@ -16,6 +17,12 @@ const activeExplorerTab = ref('siscoop3f');
 const selectedVertical = ref('SISCOOP3F - Gestão Cooperativista');
 const preselectedUsers = ref(null);
 const scrollReady = ref(false);
+
+const whatsappUrl = computed(() => {
+    const cleanPhone = String(props.initialState.settings?.whatsapp_number || '').replace(/\D/g, '');
+    const text = encodeURIComponent('Olá! Vim pelo Portal IntegreService e gostaria de conversar sobre uma proposta comercial.');
+    return `https://wa.me/${cleanPhone}?text=${text}`;
+});
 
 let revealObserver = null;
 
@@ -131,6 +138,38 @@ const handleSelectVertical = (verticalName, users = null) => {
             />
         </main>
 
+        <!-- 6. Barra de Ação Rápida Mobile para Polegar (Mobile Bottom Action Dock) -->
+        <nav
+            aria-label="Ações Rápidas Mobile"
+            class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#011328]/95 backdrop-blur-md border-t border-cyan-500/30 shadow-[0_-8px_30px_rgba(1,19,40,0.6)] pb-safe"
+        >
+            <div class="grid grid-cols-3 divide-x divide-white/10 h-14">
+                <a
+                    href="#ecossistema"
+                    class="flex flex-col items-center justify-center gap-0.5 text-slate-200 active:bg-white/10 transition"
+                >
+                    <AppIcon name="network" class="w-4 h-4 text-[#00E5FF]" />
+                    <span class="font-brand font-bold text-[10px] uppercase tracking-wider">5 Soluções</span>
+                </a>
+
+                <a
+                    href="#siscoop3f"
+                    class="flex flex-col items-center justify-center gap-0.5 text-slate-200 active:bg-white/10 transition"
+                >
+                    <AppIcon name="chart-bar" class="w-4 h-4 text-[#80FFDB]" />
+                    <span class="font-brand font-bold text-[10px] uppercase tracking-wider">Simulador</span>
+                </a>
+
+                <a
+                    href="#contato"
+                    class="flex flex-col items-center justify-center gap-0.5 bg-[#00E5FF] text-[#011328] active:bg-[#80FFDB] transition"
+                >
+                    <span class="font-brand font-extrabold text-[11px] uppercase tracking-wider">Proposta →</span>
+                    <span class="font-brand font-semibold text-[9px] uppercase tracking-tight opacity-85">30 Dias Free</span>
+                </a>
+            </div>
+        </nav>
+
         <!-- Modal de Acesso Rápido às Plataformas (Geometria Executiva Precisa) -->
         <Transition name="modal-fade">
             <div
@@ -142,8 +181,8 @@ const handleSelectVertical = (verticalName, users = null) => {
                     <!-- Barra Superior de Destaque -->
                     <div class="h-1 w-full bg-gradient-to-r from-[#00509D] via-[#00B4D8] to-[#00E5FF]"></div>
 
-                    <div class="p-7 sm:p-9">
-                        <div class="flex items-center justify-between pb-5 border-b border-white/10">
+                    <div class="p-5 sm:p-9">
+                        <div class="flex items-center justify-between pb-4 sm:pb-5 border-b border-white/10">
                             <BrandLogo
                                 :part1="initialState.settings.brand_part_1"
                                 :part2="initialState.settings.brand_part_2"
@@ -161,11 +200,11 @@ const handleSelectVertical = (verticalName, users = null) => {
                             </button>
                         </div>
 
-                        <div class="mt-5">
-                            <span class="text-[11px] font-brand font-bold uppercase tracking-[0.16em] text-[#00E5FF]">
+                        <div class="mt-4 sm:mt-5">
+                            <span class="text-[10px] sm:text-[11px] font-brand font-bold uppercase tracking-[0.16em] text-[#00E5FF]">
                                 Ambientes em Produção
                             </span>
-                            <h3 class="font-brand text-xl sm:text-2xl font-extrabold mt-1">
+                            <h3 class="font-brand text-lg sm:text-2xl font-extrabold mt-1">
                                 Central de Acesso às Plataformas
                             </h3>
                             <p class="text-xs sm:text-sm text-slate-300 mt-1">
@@ -173,25 +212,25 @@ const handleSelectVertical = (verticalName, users = null) => {
                             </p>
                         </div>
 
-                        <div class="mt-6 space-y-3">
+                        <div class="mt-5 sm:mt-6 space-y-3">
                             <a
                                 :href="initialState.settings.siscoop3f_url"
                                 target="_blank"
                                 rel="noopener"
-                                class="group flex items-center justify-between p-4 sm:p-5 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#80FFDB]/60 border-l-4 border-l-[#80FFDB] transition-all"
+                                class="group flex items-center justify-between gap-3 p-4 sm:p-5 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#80FFDB]/60 border-l-4 border-l-[#80FFDB] transition-all"
                             >
-                                <div>
+                                <div class="min-w-0">
                                     <span class="text-[10px] font-brand font-bold uppercase tracking-widest text-[#80FFDB] block">
-                                        GESTÃO COOPERATIVISTA • 30 DIAS SEM CUSTO
+                                        GESTÃO COOPERATIVISTA • 30D FREE
                                     </span>
                                     <h4 class="font-brand text-base sm:text-lg font-bold text-white mt-0.5">
                                         Plataforma SISCOOP3F
                                     </h4>
-                                    <span class="text-xs text-slate-400 font-mono block mt-0.5">
+                                    <span class="text-[11px] sm:text-xs text-slate-400 font-mono block mt-0.5 truncate">
                                         {{ initialState.settings.siscoop3f_url }}
                                     </span>
                                 </div>
-                                <span class="px-3.5 py-2 rounded bg-[#80FFDB] text-[#01162E] font-brand font-bold text-xs tracking-wide shrink-0 group-hover:translate-x-0.5 transition-transform">
+                                <span class="px-3 py-2 rounded bg-[#80FFDB] text-[#01162E] font-brand font-bold text-xs tracking-wide shrink-0 whitespace-nowrap">
                                     Acessar ↗
                                 </span>
                             </a>
@@ -200,20 +239,20 @@ const handleSelectVertical = (verticalName, users = null) => {
                                 :href="initialState.settings.telemedicine_url"
                                 target="_blank"
                                 rel="noopener"
-                                class="group flex items-center justify-between p-4 sm:p-5 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#00F5D4]/60 border-l-4 border-l-[#00F5D4] transition-all"
+                                class="group flex items-center justify-between gap-3 p-4 sm:p-5 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#00F5D4]/60 border-l-4 border-l-[#00F5D4] transition-all"
                             >
-                                <div>
+                                <div class="min-w-0">
                                     <span class="text-[10px] font-brand font-bold uppercase tracking-widest text-[#00F5D4] block">
                                         SAÚDE DIGITAL 24/7
                                     </span>
                                     <h4 class="font-brand text-base sm:text-lg font-bold text-white mt-0.5">
                                         Portal de Telemedicina
                                     </h4>
-                                    <span class="text-xs text-slate-400 font-mono block mt-0.5">
+                                    <span class="text-[11px] sm:text-xs text-slate-400 font-mono block mt-0.5 truncate">
                                         {{ initialState.settings.telemedicine_url }}
                                     </span>
                                 </div>
-                                <span class="px-3.5 py-2 rounded bg-[#00F5D4] text-[#03045E] font-brand font-bold text-xs tracking-wide shrink-0 group-hover:translate-x-0.5 transition-transform">
+                                <span class="px-3 py-2 rounded bg-[#00F5D4] text-[#03045E] font-brand font-bold text-xs tracking-wide shrink-0 whitespace-nowrap">
                                     Login ↗
                                 </span>
                             </a>
