@@ -84,4 +84,25 @@ class ExampleTest extends TestCase
             ->assertSee('NOVO BADGE EDITADO PELO ADMIN')
             ->assertSee('Título Editado Dinamicamente');
     }
+
+    public function test_seo_metadata_sitemap_and_robots_are_configured(): void
+    {
+        $this->seed();
+
+        $home = $this->get('/');
+        $home->assertStatus(200);
+        $home->assertSee('application/ld+json', false);
+        $home->assertSee('og:title', false);
+        $home->assertSee('twitter:card', false);
+        $home->assertSee('Razão de Existir');
+
+        $sitemap = $this->get('/sitemap.xml');
+        $sitemap->assertStatus(200);
+        $sitemap->assertSee('<urlset', false);
+
+        $robots = $this->get('/robots.txt');
+        $robots->assertStatus(200);
+        $robots->assertSee('Disallow: /admin', false);
+        $robots->assertSee('Sitemap:', false);
+    }
 }

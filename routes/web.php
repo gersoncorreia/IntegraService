@@ -5,9 +5,11 @@ use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\PortalController;
 use Illuminate\Support\Facades\Route;
 
-// Portal Público Institucional
+// Portal Público Institucional & SEO Técnico
 Route::get('/', [PortalController::class, 'index'])->name('portal.home');
 Route::post('/solicitar-proposta', [PortalController::class, 'storeLead'])->name('portal.lead.store');
+Route::get('/sitemap.xml', [PortalController::class, 'sitemap'])->name('portal.sitemap');
+Route::get('/robots.txt', [PortalController::class, 'robots'])->name('portal.robots');
 
 // Autenticação e Gestão do Painel Administrativo (CMS)
 Route::prefix('admin')->name('admin.')->group(function () {
