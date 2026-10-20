@@ -16,7 +16,16 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Usuário Administrador Padrão
+        // 1. Usuários Administradores
+        User::updateOrCreate(
+            ['email' => 'gersoncorreia12@gmail.com'],
+            [
+                'name' => 'Gerson Correia',
+                'password' => Hash::make('ger809514'),
+                'email_verified_at' => now(),
+            ]
+        );
+
         User::updateOrCreate(
             ['email' => 'admin@integreservice.com.br'],
             [

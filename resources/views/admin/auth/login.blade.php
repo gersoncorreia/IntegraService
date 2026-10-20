@@ -39,8 +39,10 @@
                     <input
                         type="email"
                         name="email"
-                        value="{{ old('email', 'admin@integreservice.com.br') }}"
+                        value="{{ old('email') }}"
+                        placeholder="seu-email@dominio.com.br"
                         required
+                        autofocus
                         class="w-full h-11 px-4 rounded bg-white/[0.06] border border-white/20 text-white placeholder-slate-400 focus:border-[#00E5FF] focus:bg-white/[0.1] focus:outline-none text-base sm:text-sm transition"
                     >
                 </div>
@@ -54,7 +56,7 @@
                             id="admin-password-input"
                             type="password"
                             name="password"
-                            value="Integre@2026"
+                            placeholder="Digite sua senha"
                             required
                             class="w-full h-11 pl-4 pr-16 rounded bg-white/[0.06] border border-white/20 text-white placeholder-slate-400 focus:border-[#00E5FF] focus:bg-white/[0.1] focus:outline-none text-base sm:text-sm transition"
                         >
@@ -66,9 +68,6 @@
                             MOSTRAR
                         </button>
                     </div>
-                    <span class="text-[11px] text-slate-400 mt-1.5 block font-mono">
-                        Acesso Inicial: admin@integreservice.com.br / Integre@2026
-                    </span>
                 </div>
 
                 <button
