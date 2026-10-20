@@ -32,9 +32,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 <template>
     <header
         :class="[
-            'sticky top-0 z-40 w-full transition-all duration-300',
+            'fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300',
             scrolled
-                ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(2,43,91,0.06)] border-b border-slate-200 py-2.5'
+                ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(2,43,91,0.08)] border-b border-slate-200 py-2.5'
                 : 'bg-white border-b border-slate-200/80 py-2.5 sm:py-3'
         ]"
     >

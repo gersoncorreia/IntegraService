@@ -90,8 +90,8 @@ const handleSelectVertical = (verticalName, users = null) => {
 </script>
 
 <template>
-    <div :class="['min-h-screen flex flex-col', scrollReady ? 'js-scroll-ready' : '']">
-        <!-- 1. Navbar Arquitetônica Executiva -->
+    <div :class="['min-h-screen flex flex-col pt-16 sm:pt-20', scrollReady ? 'js-scroll-ready' : '']">
+        <!-- 1. Navbar Arquitetônica Executiva (Fixa com Rolagem) -->
         <PortalNavbar
             :settings="initialState.settings"
             :urls="initialState.urls"

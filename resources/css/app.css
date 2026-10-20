@@ -49,12 +49,11 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+body {
     font-family: var(--font-body);
     color: #0f172a;
     background-color: #F4F8FB;
-    overflow-x: hidden;
-    max-width: 100vw;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
 }
 
