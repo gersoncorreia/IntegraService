@@ -67,7 +67,7 @@ class CmsManagementService
 
         $existingExtra = is_array($section->extra_data) ? $section->extra_data : [];
 
-        if (in_array($section->section_key, ['hero', 'institutional_identity'], true) && !empty($heroExtra)) {
+        if (in_array($section->section_key, PageSection::STRUCTURAL_KEYS, true) && !empty($heroExtra)) {
             $payload['extra_data'] = array_merge($existingExtra, $heroExtra);
         } elseif ($section->isEcosystemTab()) {
             $currentTabMeta = $section->getTabMeta();

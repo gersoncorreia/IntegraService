@@ -4,7 +4,10 @@ import AppIcon from '../ui/AppIcon.vue';
 
 const props = defineProps({
     identitySection: { type: Object, required: true },
+    settings: { type: Object, default: () => ({}) },
 });
+
+const emit = defineEmits(['select-vertical']);
 
 const extra = computed(() => props.identitySection?.extra_data || {});
 
@@ -43,6 +46,20 @@ const valuesList = computed(() => {
         .filter(Boolean)
         .map((item) => item.charAt(0).toUpperCase() + item.slice(1));
 });
+
+const leadershipBadge = computed(() => extra.value.leadership_badge || 'LIDERANÇA E RELACIONAMENTO INSTITUCIONAL');
+const leadershipTitle = computed(() => extra.value.leadership_title || 'Eudemir Bezerra | Direção Executiva - IntegreService');
+const leadershipBio1 = computed(
+    () =>
+        extra.value.leadership_bio_1 ||
+        'À frente do relacionamento institucional e do desenvolvimento estratégico da IntegreService, Eudemir Bezerra atua na articulação de soluções e parcerias voltadas à gestão, tecnologia e inovação.'
+);
+const leadershipBio2 = computed(
+    () =>
+        extra.value.leadership_bio_2 ||
+        'Sua atuação busca aproximar instituições de ferramentas e serviços que contribuam para a modernização administrativa, a eficiência operacional e a ampliação do acesso a soluções especializadas.'
+);
+const leadershipCtaText = computed(() => extra.value.leadership_cta_text || 'Falar com a direção executiva');
 </script>
 
 <template>
@@ -51,17 +68,17 @@ const valuesList = computed(() => {
         id="identidade"
         class="py-14 sm:py-20 bg-white border-b border-slate-200/90 relative"
     >
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10">
             <!-- Cabeçalho Enxuto e Executivo -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-7 sm:mb-9" data-reveal>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4" data-reveal>
                 <div>
                     <div class="inline-flex items-center gap-2.5 pl-3 pr-3.5 py-1 bg-[#022B5B]/[0.06] border-l-2 border-[#022B5B] rounded-r mb-2.5">
                         <span class="font-brand text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-[#022B5B]">
-                            {{ identitySection.badge_text || 'DIRETRIZES ESTRATÉGICAS • GOVERNANÇA & PROPÓSITO' }}
+                            {{ identitySection.badge_text || 'QUEM SOMOS • IDENTIDADE E LIDERANÇA INSTITUCIONAL' }}
                         </span>
                     </div>
                     <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#022B5B] leading-tight tracking-[-0.02em]">
-                        {{ identitySection.title || 'A base institucional que guia' }}
+                        {{ identitySection.title || 'A base institucional e a liderança que guiam' }}
                         <span class="text-[#0077B6]">{{ identitySection.highlighted_word || 'nossa atuação' }}</span>
                     </h2>
                 </div>
@@ -73,7 +90,7 @@ const valuesList = computed(() => {
                 </p>
             </div>
 
-            <!-- Grade Arquitetônica Swiss-Grid Compacta (Sem poluir a página!) -->
+            <!-- Grade Arquitetônica Swiss-Grid Compacta (Razão de Existir, Missão, Visão e Valores) -->
             <div
                 class="rounded-lg border border-slate-200 bg-[#F8FAFC] shadow-[0_14px_36px_rgba(2,43,91,0.04)] overflow-hidden"
                 data-reveal="scale"
@@ -173,6 +190,54 @@ const valuesList = computed(() => {
                             </span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- 4. Bloco de Liderança e Relacionamento Institucional (Seção 6.5 do Diagnóstico Oficial) -->
+            <div
+                id="lideranca"
+                class="rounded-lg border border-slate-200 border-l-4 border-l-[#022B5B] bg-white p-6 sm:p-8 shadow-2xs grid lg:grid-cols-12 gap-6 lg:gap-10 items-center"
+                data-reveal
+            >
+                <div class="lg:col-span-8 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#022B5B]/10 text-[#022B5B] font-brand font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
+                        <AppIcon name="users" class="w-3.5 h-3.5 text-[#0077B6]" />
+                        <span>{{ leadershipBadge }}</span>
+                    </div>
+
+                    <h3 class="font-brand text-xl sm:text-2xl font-extrabold text-[#022B5B] tracking-tight">
+                        {{ leadershipTitle }}
+                    </h3>
+
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {{ leadershipBio1 }}
+                    </p>
+
+                    <p v-if="leadershipBio2" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {{ leadershipBio2 }}
+                    </p>
+                </div>
+
+                <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end justify-between gap-3 pt-2 lg:pt-0 border-t lg:border-t-0 lg:border-l border-slate-200 lg:pl-8">
+                    <div class="text-left lg:text-right">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-slate-400 block">
+                            ATENDIMENTO INSTITUCIONAL
+                        </span>
+                        <strong class="font-brand text-sm font-bold text-[#022B5B] block mt-0.5">
+                            {{ settings?.company_city || 'Rio Branco - Acre' }}
+                        </strong>
+                        <span class="text-xs text-slate-500 block">
+                            {{ settings?.contact_email || 'contato@integreservice.com.br' }}
+                        </span>
+                    </div>
+
+                    <button
+                        type="button"
+                        @click="emit('select-vertical', 'Consultoria Executiva')"
+                        class="w-full sm:w-auto px-5 py-3.5 rounded font-brand font-bold text-xs uppercase tracking-wider text-white bg-[#022B5B] hover:bg-[#00509D] border-b-2 border-[#00E5FF] transition cursor-pointer text-center"
+                    >
+                        {{ leadershipCtaText }} →
+                    </button>
                 </div>
             </div>
         </div>

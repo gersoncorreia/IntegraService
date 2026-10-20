@@ -77,42 +77,41 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
             <nav class="hidden lg:flex items-center gap-0.5">
                 <a
                     href="#ecossistema"
-                    class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap"
+                    class="px-3 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap"
                 >
                     Soluções
                 </a>
                 <a
                     href="#identidade"
-                    class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap"
+                    class="px-3 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap"
                 >
-                    Identidade
+                    Sobre nós
                 </a>
                 <a
                     href="#siscoop3f"
-                    class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition inline-flex items-center gap-2 whitespace-nowrap"
+                    class="px-3 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition inline-flex items-center gap-1.5 whitespace-nowrap"
                 >
                     <span>SISCOOP3F</span>
                     <span class="px-1.5 py-0.5 text-[10px] font-extrabold tracking-wider uppercase rounded-xs bg-[#022B5B] text-[#00E5FF]">
-                        30d Free
+                        Simulador
                     </span>
+                </a>
+                <a
+                    href="#gestao-publica"
+                    class="px-3 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap"
+                >
+                    Gestão Pública
                 </a>
                 <button
                     type="button"
                     @click="selectTabAndScroll('telemedicine')"
-                    class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap cursor-pointer"
+                    class="px-3 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap cursor-pointer"
                 >
                     Telemedicina
                 </button>
-                <button
-                    type="button"
-                    @click="selectTabAndScroll('consulting')"
-                    class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap cursor-pointer"
-                >
-                    Consultoria & Livro
-                </button>
                 <a
                     href="#contato"
-                    class="px-3.5 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap"
+                    class="px-3 py-2 rounded text-[13px] font-brand font-semibold text-[#022B5B] hover:text-[#00509D] hover:bg-slate-100/80 transition whitespace-nowrap"
                 >
                     Contato
                 </a>
@@ -133,7 +132,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                     href="#contato"
                     class="h-9 px-4 rounded font-brand font-bold text-xs uppercase tracking-wider text-white bg-[#022B5B] hover:bg-[#00509D] border-b-2 border-[#00B4D8] inline-flex items-center gap-1.5 whitespace-nowrap transition"
                 >
-                    <span>Proposta</span>
+                    <span>Apresentação</span>
                     <span class="text-[#00E5FF]">→</span>
                 </a>
             </div>
@@ -209,11 +208,15 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                     </button>
 
                     <a @click="mobileMenuOpen = false" href="#identidade" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
-                        <span class="font-brand font-semibold text-sm text-cyan-200">Identidade: Missão, Visão & Valores</span>
+                        <span class="font-brand font-semibold text-sm text-cyan-200">Sobre Nós & Liderança Institucional</span>
+                        <span class="text-xs text-cyan-200">↓</span>
+                    </a>
+                    <a @click="mobileMenuOpen = false" href="#gestao-publica" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
+                        <span class="font-brand font-semibold text-sm text-cyan-200">Soluções para a Gestão Pública</span>
                         <span class="text-xs text-cyan-200">↓</span>
                     </a>
                     <a @click="mobileMenuOpen = false" href="#siscoop3f" class="w-full flex items-center justify-between px-3 py-2.5 rounded bg-white/[0.03] hover:bg-white/[0.08]">
-                        <span class="font-brand font-semibold text-sm text-[#80FFDB]">Simulador Financeiro de Parceria</span>
+                        <span class="font-brand font-semibold text-sm text-[#80FFDB]">Simulador Financeiro de Eficiência</span>
                         <span class="text-xs text-[#80FFDB]">↓</span>
                     </a>
                 </div>
@@ -223,7 +226,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                     href="#contato"
                     class="block w-full text-center py-3.5 rounded font-brand font-bold text-xs uppercase tracking-[0.12em] text-[#01162E] bg-[#00E5FF]"
                 >
-                    Solicitar Proposta Comercial →
+                    Agendar Apresentação →
                 </a>
             </div>
         </Transition>

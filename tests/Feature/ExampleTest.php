@@ -38,19 +38,15 @@ class ExampleTest extends TestCase
         $response = $this->post('/solicitar-proposta', [
             'name' => 'Carlos Eduardo',
             'organization' => 'CoopSaúde Norte',
-            'role' => 'Diretor Financeiro',
-            'email' => 'carlos@coopsaude.com.br',
             'phone' => '(68) 99988-7766',
-            'vertical_interest' => 'SISCOOP3F - Gestão Cooperativista',
-            'estimated_users' => 2500,
-            'message' => 'Desejamos implantar o SISCOOP3F com os 30 dias gratuitos.',
+            'vertical_interest' => 'Soluções para Gestão Pública',
         ]);
 
         $response->assertRedirect();
         $this->assertDatabaseHas('leads', [
             'name' => 'Carlos Eduardo',
             'organization' => 'CoopSaúde Norte',
-            'estimated_users' => 2500,
+            'vertical_interest' => 'Soluções para Gestão Pública',
         ]);
     }
 

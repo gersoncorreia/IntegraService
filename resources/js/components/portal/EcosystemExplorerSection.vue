@@ -432,11 +432,26 @@ const isExternalUrl = (url) => {
 
                                     <!-- Botão Secundário -->
                                     <a
-                                        v-if="currentTabObj.key === 'siscoop3f'"
+                                        v-if="currentTabObj.secondary_cta_text && isExternalUrl(currentTabObj.secondary_cta_url)"
+                                        :href="currentTabObj.secondary_cta_url"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        :class="[
+                                            'w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded font-brand font-bold text-xs uppercase tracking-wider transition text-center',
+                                            currentTabObj.tab_theme === 'dark'
+                                                ? 'text-white bg-white/10 hover:bg-white/15 border border-white/20'
+                                                : 'text-[#022B5B] bg-slate-100 hover:bg-slate-200/80 border border-slate-200'
+                                        ]"
+                                    >
+                                        <span>{{ currentTabObj.secondary_cta_text }}</span>
+                                        <span>↗</span>
+                                    </a>
+                                    <a
+                                        v-else-if="currentTabObj.key === 'siscoop3f'"
                                         href="#siscoop3f"
                                         class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded font-brand font-bold text-xs uppercase tracking-wider text-[#022B5B] bg-slate-100 hover:bg-slate-200/80 border border-slate-200 transition text-center"
                                     >
-                                        <span>Simulador Financeiro</span>
+                                        <span>{{ currentTabObj.secondary_cta_text || 'Simulador Financeiro' }}</span>
                                         <span>↓</span>
                                     </a>
                                     <button

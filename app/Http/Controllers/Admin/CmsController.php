@@ -125,10 +125,16 @@ class CmsController extends Controller
             $heroExtra = [
                 'stat_1_value' => $request->input('stat_1_value', '4 Soluções'),
                 'stat_1_label' => $request->input('stat_1_label', 'Integradas em Rede'),
-                'stat_2_value' => $request->input('stat_2_value', '30 Dias'),
-                'stat_2_label' => $request->input('stat_2_label', 'Implantação Gratuita'),
-                'stat_3_value' => $request->input('stat_3_value', 'R$ 0,00'),
-                'stat_3_label' => $request->input('stat_3_label', 'Desembolso Inicial'),
+                'stat_2_value' => $request->input('stat_2_value', 'Cooperativas'),
+                'stat_2_label' => $request->input('stat_2_label', 'Empresas & Setor Público'),
+                'stat_3_value' => $request->input('stat_3_value', '30 Dias*'),
+                'stat_3_label' => $request->input('stat_3_label', 'Avaliação Assistida SISCOOP3F'),
+                'audience_1_title' => $request->input('audience_1_title', 'Para Cooperativas'),
+                'audience_1_desc' => $request->input('audience_1_desc', 'SISCOOP3F, guias digitais, rastreabilidade e redução de custos operacionais.'),
+                'audience_2_title' => $request->input('audience_2_title', 'Para Empresas & Saúde Privada'),
+                'audience_2_desc' => $request->input('audience_2_desc', 'Telemedicina 24/7, consultoria organizacional, auditoria e governança.'),
+                'audience_3_title' => $request->input('audience_3_title', 'Para Gestão Pública'),
+                'audience_3_desc' => $request->input('audience_3_desc', 'Modernização de serviços públicos, fluxos de atendimento e saúde digital.'),
             ];
         } elseif ($section->section_key === 'institutional_identity') {
             $heroExtra = [
@@ -138,8 +144,30 @@ class CmsController extends Controller
                 'mission_text' => $request->input('mission_text', ''),
                 'vision_label' => $request->input('vision_label', 'Visão'),
                 'vision_text' => $request->input('vision_text', ''),
-                'values_label' => $request->input('values_label', 'Nossos Valores Inegociáveis'),
+                'values_label' => $request->input('values_label', 'Valores Institucionais'),
                 'values_text' => $request->input('values_text', ''),
+                'leadership_badge' => $request->input('leadership_badge', 'LIDERANÇA E RELACIONAMENTO INSTITUCIONAL'),
+                'leadership_title' => $request->input('leadership_title', 'Eudemir Bezerra | Direção Executiva - IntegreService'),
+                'leadership_bio_1' => $request->input('leadership_bio_1', ''),
+                'leadership_bio_2' => $request->input('leadership_bio_2', ''),
+                'leadership_cta_text' => $request->input('leadership_cta_text', 'Falar com a direção executiva'),
+            ];
+        } elseif ($section->section_key === 'implementation_plan') {
+            $heroExtra = [
+                'commercial_note' => $request->input('commercial_note', ''),
+                'journey_title' => $request->input('journey_title', 'Jornada Comercial Estruturada em 5 Etapas'),
+            ];
+        } elseif ($section->section_key === 'investment_model') {
+            $heroExtra = [
+                'simulator_title' => $request->input('simulator_title', 'Simule o potencial de eficiência da sua cooperativa'),
+                'simulator_subtitle' => $request->input('simulator_subtitle', 'Utilize nosso simulador para construir uma estimativa preliminar dos possíveis impactos financeiros da modernização dos processos administrativos e operacionais da sua cooperativa.'),
+                'disclaimer_text' => $request->input('disclaimer_text', 'Os resultados apresentados são projeções ilustrativas e não representam garantia de economia. A economia efetiva dependerá da estrutura atual, dos custos identificados, das soluções implantadas e dos resultados comprovados durante a operação.'),
+                'contract_note' => $request->input('contract_note', 'As condições de remuneração por desempenho serão definidas em proposta comercial e instrumento contratual específico.'),
+                'simulator_cta_text' => $request->input('simulator_cta_text', 'Solicitar análise personalizada'),
+            ];
+        } elseif ($section->section_key === 'public_management') {
+            $heroExtra = [
+                'regulatory_note' => $request->input('regulatory_note', 'Cada projeto é estruturado conforme as necessidades do órgão, a viabilidade técnica, os requisitos regulatórios e as normas de contratação pública aplicáveis.'),
             ];
         }
 

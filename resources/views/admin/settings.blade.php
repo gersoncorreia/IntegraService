@@ -36,12 +36,23 @@
                     <input type="text" name="consultant_name" value="{{ old('consultant_name', $settings->consultant_name) }}" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1.5">Cargo / Título do Consultor</label>
+                    <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1.5">Cargo / Título Institucional</label>
                     <input type="text" name="consultant_role" value="{{ old('consultant_role', $settings->consultant_role) }}" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm">
                 </div>
                 <div>
                     <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1.5">Cidade / Sede</label>
                     <input type="text" name="company_city" value="{{ old('company_city', $settings->company_city) }}" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm">
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-5 pt-2 border-t border-slate-100">
+                <div>
+                    <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1.5">Razão Social / Denominação Institucional</label>
+                    <input type="text" name="legal_name" value="{{ old('legal_name', $settings->legal_name) }}" placeholder="Ex: IntegreService — Rede de Serviços & Tecnologia" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1.5">CNPJ (Opcional — Exibido no rodapé se preenchido)</label>
+                    <input type="text" name="cnpj" value="{{ old('cnpj', $settings->cnpj) }}" placeholder="Ex: 00.000.000/0001-00" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm font-mono">
                 </div>
             </div>
         </div>
@@ -122,6 +133,10 @@
             <div>
                 <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1.5">Texto de Copyright</label>
                 <input type="text" name="footer_copyright" value="{{ old('footer_copyright', $settings->footer_copyright) }}" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm">
+            </div>
+            <div>
+                <label class="block text-xs font-brand font-bold uppercase text-slate-700 mb-1.5">Texto da Política de Privacidade & Proteção de Dados (LGPD)</label>
+                <textarea name="privacy_policy_text" rows="5" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs leading-relaxed">{{ old('privacy_policy_text', $settings->privacy_policy_text) }}</textarea>
             </div>
         </div>
 

@@ -313,15 +313,19 @@
 
                         <h3 class="font-brand text-lg font-extrabold text-[#022B5B]">
                             @if($section->section_key === 'hero')
-                                Topo Principal (Hero Header)
+                                Topo Principal (Hero Header) & Segmentação por Público
                             @elseif($section->section_key === 'ecosystem')
-                                Cabeçalho Geral: "Nossas Frentes de Atuação"
+                                Cabeçalho Geral: "Nossas Soluções"
                             @elseif($section->section_key === 'institutional_identity')
-                                Identidade Institucional (Razão de Existir, Missão, Visão e Valores)
+                                Quem Somos, Identidade Institucional & Liderança Executiva
+                            @elseif($section->section_key === 'implementation_plan')
+                                Implantação Planejada & Jornada Comercial (5 Etapas)
                             @elseif($section->section_key === 'investment_model')
-                                Os 3 Pilares Econômicos (Acima do Simulador)
+                                Simulador Financeiro, Premissas & Memória de Cálculo
+                            @elseif($section->section_key === 'public_management')
+                                Soluções para a Gestão Pública & Municípios
                             @elseif($section->section_key === 'contact')
-                                Chamada Comercial & Formulário de Contato
+                                Agendamento de Apresentação & Formulário de Contato
                             @else
                                 {{ $section->nav_label ?: ucfirst($section->section_key) }}
                             @endif

@@ -6,7 +6,9 @@ import PortalNavbar from './portal/PortalNavbar.vue';
 import HeroSection from './portal/HeroSection.vue';
 import EcosystemExplorerSection from './portal/EcosystemExplorerSection.vue';
 import InstitutionalIdentitySection from './portal/InstitutionalIdentitySection.vue';
+import ImplementationAndJourneySection from './portal/ImplementationAndJourneySection.vue';
 import SiscoopAndSimulatorSection from './portal/SiscoopAndSimulatorSection.vue';
+import PublicManagementSection from './portal/PublicManagementSection.vue';
 import ContactAndFooterSection from './portal/ContactAndFooterSection.vue';
 
 const props = defineProps({
@@ -15,15 +17,9 @@ const props = defineProps({
 
 const platformModalOpen = ref(false);
 const activeExplorerTab = ref('siscoop3f');
-const selectedVertical = ref('SISCOOP3F - Gestão Cooperativista');
+const selectedVertical = ref('Gestão Cooperativista - SISCOOP3F');
 const preselectedUsers = ref(null);
 const scrollReady = ref(false);
-
-const whatsappUrl = computed(() => {
-    const cleanPhone = String(props.initialState.settings?.whatsapp_number || '').replace(/\D/g, '');
-    const text = encodeURIComponent('Olá! Vim pelo Portal IntegreService e gostaria de conversar sobre uma proposta comercial.');
-    return `https://wa.me/${cleanPhone}?text=${text}`;
-});
 
 let revealObserver = null;
 
@@ -76,7 +72,13 @@ const handleNavigateTab = (tabKey) => {
 };
 
 const handleSelectVertical = (verticalName, users = null) => {
-    selectedVertical.value = verticalName;
+    const mapVertical = {
+        SISCOOP3F: 'Gestão Cooperativista - SISCOOP3F',
+        'Telemedicina 24/7': 'Telemedicina',
+        'Consultoria Executiva': 'Consultoria Executiva',
+        'Base Científica': 'Base Científica',
+    };
+    selectedVertical.value = mapVertical[verticalName] || verticalName;
     if (users) {
         preselectedUsers.value = users;
     }
@@ -99,15 +101,17 @@ const handleSelectVertical = (verticalName, users = null) => {
             @navigate-tab="handleNavigateTab"
         />
 
+        <!-- Ordem Recomendada das Seções (Seção 7 do Diagnóstico Oficial) -->
         <main class="flex-1">
-            <!-- 2. Hero Editorial & Painel Operacional -->
+            <!-- 2. Abertura Institucional, Proposta de Valor & Segmentação por Público -->
             <HeroSection
                 v-if="initialState.sections?.hero"
                 :hero="initialState.sections.hero"
                 :settings="initialState.settings"
+                @select-audience="handleNavigateTab"
             />
 
-            <!-- 3. Explorador Interativo das Frentes de Atuação (100% Dinâmico via CMS!) -->
+            <!-- 3. Quatro Soluções com Explicação Individual (100% Dinâmico via CMS!) -->
             <EcosystemExplorerSection
                 :ecosystem="initialState.sections?.ecosystem"
                 :ecosystemTabs="initialState.ecosystemTabs || []"
@@ -118,13 +122,14 @@ const handleSelectVertical = (verticalName, users = null) => {
                 @select-vertical="handleSelectVertical"
             />
 
-            <!-- 4. Identidade Institucional (Razão de Existir, Missão, Visão e Valores) -->
-            <InstitutionalIdentitySection
-                v-if="initialState.sections?.institutional_identity"
-                :identitySection="initialState.sections.institutional_identity"
+            <!-- 4. Modelo de Implantação Planejada & Jornada Comercial em 5 Etapas -->
+            <ImplementationAndJourneySection
+                v-if="initialState.sections?.implementation_plan"
+                :implementationSection="initialState.sections.implementation_plan"
+                @select-vertical="handleSelectVertical"
             />
 
-            <!-- 5. Destaque Comercial SISCOOP3F & Simulador Financeiro Estruturado -->
+            <!-- 5. Simulador Financeiro com Premissas, Memória de Cálculo & Ressalvas Legais -->
             <SiscoopAndSimulatorSection
                 :siscoop="initialState.sections?.siscoop3f"
                 :investment="initialState.sections?.investment_model"
@@ -132,7 +137,22 @@ const handleSelectVertical = (verticalName, users = null) => {
                 @select-vertical="handleSelectVertical"
             />
 
-            <!-- 6. Solicitação de Proposta & Rodapé Executivo -->
+            <!-- 6. Seção Dedicada à Gestão Pública & Municípios -->
+            <PublicManagementSection
+                v-if="initialState.sections?.public_management"
+                :publicSection="initialState.sections.public_management"
+                @select-vertical="handleSelectVertical"
+            />
+
+            <!-- 7. Quem Somos, Identidade Institucional & Liderança Executiva (Eudemir Bezerra) -->
+            <InstitutionalIdentitySection
+                v-if="initialState.sections?.institutional_identity"
+                :identitySection="initialState.sections.institutional_identity"
+                :settings="initialState.settings"
+                @select-vertical="handleSelectVertical"
+            />
+
+            <!-- 8. Agendamento de Apresentação, Formulário Simplificado & Rodapé com LGPD -->
             <ContactAndFooterSection
                 :contact="initialState.sections?.contact"
                 :settings="initialState.settings"
@@ -143,7 +163,7 @@ const handleSelectVertical = (verticalName, users = null) => {
             />
         </main>
 
-        <!-- 7. Barra de Ação Rápida Mobile para Polegar (Mobile Bottom Action Dock) -->
+        <!-- 9. Barra de Ação Rápida Mobile para Polegar (Mobile Bottom Action Dock) -->
         <nav
             aria-label="Ações Rápidas Mobile"
             class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#011328]/95 backdrop-blur-md border-t border-cyan-500/30 shadow-[0_-8px_30px_rgba(1,19,40,0.6)] pb-safe"
@@ -171,13 +191,13 @@ const handleSelectVertical = (verticalName, users = null) => {
                     href="#contato"
                     class="flex flex-col items-center justify-center gap-0.5 bg-[#00E5FF] text-[#011328] active:bg-[#80FFDB] transition"
                 >
-                    <span class="font-brand font-extrabold text-[11px] uppercase tracking-wider">Proposta →</span>
-                    <span class="font-brand font-semibold text-[9px] uppercase tracking-tight opacity-85">30 Dias Free</span>
+                    <span class="font-brand font-extrabold text-[10px] uppercase tracking-wider">Apresentação →</span>
+                    <span class="font-brand font-semibold text-[9px] uppercase tracking-tight opacity-85">Falar com Equipe</span>
                 </a>
             </div>
         </nav>
 
-        <!-- Modal de Acesso Rápido às Plataformas (Geometria Executiva Precisa) -->
+        <!-- Modal de Acesso Rápido às Plataformas -->
         <Transition name="modal-fade">
             <div
                 v-if="platformModalOpen"
@@ -185,7 +205,6 @@ const handleSelectVertical = (verticalName, users = null) => {
                 @click.self="platformModalOpen = false"
             >
                 <div class="w-full max-w-xl rounded-lg bg-[#01162E] border border-cyan-500/30 text-white shadow-2xl relative overflow-hidden">
-                    <!-- Barra Superior de Destaque -->
                     <div class="h-1 w-full bg-gradient-to-r from-[#00509D] via-[#00B4D8] to-[#00E5FF]"></div>
 
                     <div class="p-5 sm:p-9">
@@ -209,7 +228,7 @@ const handleSelectVertical = (verticalName, users = null) => {
 
                         <div class="mt-4 sm:mt-5">
                             <span class="text-[10px] sm:text-[11px] font-brand font-bold uppercase tracking-[0.16em] text-[#00E5FF]">
-                                Ambientes em Produção
+                                Ambientes Digitais Ativos
                             </span>
                             <h3 class="font-brand text-lg sm:text-2xl font-extrabold mt-1">
                                 Central de Acesso às Plataformas
@@ -228,7 +247,7 @@ const handleSelectVertical = (verticalName, users = null) => {
                             >
                                 <div class="min-w-0">
                                     <span class="text-[10px] font-brand font-bold uppercase tracking-widest text-[#80FFDB] block">
-                                        GESTÃO COOPERATIVISTA • 30D FREE
+                                        GESTÃO COOPERATIVISTA
                                     </span>
                                     <h4 class="font-brand text-base sm:text-lg font-bold text-white mt-0.5">
                                         Plataforma SISCOOP3F
